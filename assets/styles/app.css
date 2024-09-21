@@ -1,0 +1,51 @@
+header {
+    height:85px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(209, 255, 178);
+    color: rgb(91, 91, 91);
+}
+
+body {
+    margin: 0 auto;
+    max-width: 90%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    height:30px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(209, 255, 178);
+    color: rgb(91, 91, 91);
+    margin-top: auto;
+}
+
+h1 {
+    border-bottom: 4px double #ccc;
+}
+
+body {
+    background: rgb(241, 239, 239);
+    background-size: cover;
+}
+
+#bildme {
+    height: 500px;
+}
+
+#bildmvc {
+    height: 300px;
+}
+
+#magic {
+    size: 60px;
+    color: yellow;
+}
+
+.crazy {
+    background-color: aquamarine;
+    color: rgb(226, 43, 165);
+}
