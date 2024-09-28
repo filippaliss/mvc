@@ -49,3 +49,13 @@ body {
     background-color: aquamarine;
     color: rgb(226, 43, 165);
 }
+
+.flash-notice {
+    padding: 0.5em;
+    color: #b7040a;
+    background-color: #ff9d4d;
+    border-color: #b8fffe;
+}
+.flash-notice:before {
+    content: "👉🏻🗑️";
+}
