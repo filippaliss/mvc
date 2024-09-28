@@ -6,4 +6,5 @@
     {% for key,value in session %}
         <p>{{ key }}: {{ dump(value)}}</p>
     {% endfor %}
+    {{ include('flash.html.twig') }}
 {% endblock %}
