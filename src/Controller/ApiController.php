@@ -17,7 +17,7 @@ class ApiController extends AbstractController
         "Nomnom betyder stoppa in i munnen",
         "BSK - Bilar Suger Kuk"
         ];
-        $randomQoute =$qoute[array_rand($qoute)];
+        $randomQoute = $qoute[array_rand($qoute)];
 
         $response = new JsonResponse(
             [
@@ -25,7 +25,7 @@ class ApiController extends AbstractController
                 "date" => date("Y-m-d H-i-s")
             ]
         );
-        
+
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
