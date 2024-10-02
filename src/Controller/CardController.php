@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\DeckClass\DeckOfCards;
+use App\DeckClass\CardGraphic;
 
 class CardController extends AbstractController
 {
@@ -17,7 +18,6 @@ class CardController extends AbstractController
         $getsession = $request->getSession();
 
         return $this->render('session.html.twig', ['session'=>$getsession->all()]);
-
     }
 
     #[Route('/session/delete', name: "sessions_delete")]
@@ -31,7 +31,6 @@ class CardController extends AbstractController
         );
 
         return $this->redirectToRoute('sessions_all');
-
     }
 
     #[Route('/card', name: "cards")]
@@ -40,36 +39,49 @@ class CardController extends AbstractController
         return $this->render('card.html.twig');
     }
 
-    #[Route('/card/deck ', name: "deck ")]
+    #[Route('/card/deck ', name: "deck")]
     public function deck(Request $request): Response
     {
-        $getsession = $request->getSession();
+        $deckOfNew = new DeckOfCards();
+        $session = $request->getSession();
+        $cards = $session->get('cards', $deckOfNew);
+        $session->set('cards', $cards);
 
-        return $this->render('card.html.twig');
+        return $this->render('card_deck.html.twig', ['cards' => $cards->getAllCardsHTML()]);
 
     }
 
     #[Route('/card/deck/shuffle ', name: "shuffle_deck")]
     public function shuffle_deck(Request $request): Response
     {
+        $session = $request->getSession();
+        $cards = $session->get('cards', []);
+        $cards->shuffleDeck();
+        $session->set('cards', $cards);
 
-        return $this->render('card.html.twig');
+        return $this->render('card_shuffle_deck.html.twig',  ['cards' => $cards->getAllCardsHTML()]);
     }
 
     #[Route('/card/deck/draw', name: "draw")]
     public function draw(Request $request): Response
     {
+        $session = $request->getSession();
+        $cards = $session->get('cards', []);
+        $result = $cards->drawCard();
+        $session->set('cards', $cards);
 
-        return $this->render('card.html.twig');
-
+        return $this->render('card_draw.html.twig', ['cards' => $result->toHTML()]);
     }
 
-    #[Route('/card/deck/draw/:number', name: "draw_nr")]
-    public function draw_nr(Request $request): Response
+    #[Route('/card/deck/draw/{number}', name: "draw_nr")]
+    public function draw_nr(Request $request, int $number): Response
     {
-
-        return $this->render('card.html.twig');
-
+        $session = $request->getSession();
+        $deck = $session->get('cards', []);
+        $cards = $deck->drawCards($number);
+        $session->set('cards', $deck);
+        $cardsHTML = array_map(fn($card) => $card->toHTML(), $cards);
+    
+        return $this->render('card_draw_nr.html.twig', ['cards' => $cardsHTML]);
     }
-
 }
