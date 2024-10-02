@@ -1,9 +1,25 @@
-header {
-    height:85px;
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(209, 255, 178);
-    color: rgb(91, 91, 91);
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: blueviolet;
+}
+
+li {
+    float: left;
+}
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li a:hover {
+    background-color: lightcoral;
 }
 
 body {
@@ -18,8 +34,8 @@ footer {
     height:30px;
     width: 100%;
     padding: 10px;
-    background-color: rgb(209, 255, 178);
-    color: rgb(91, 91, 91);
+    background-color: rgb(124, 59, 244);
+    color: rgb(255, 255, 255);
     margin-top: auto;
 }
 
@@ -34,6 +50,8 @@ body {
 
 #bildme {
     height: 500px;
+    width: 350px;
+    margin: 0 auto;
 }
 
 #bildmvc {
@@ -58,4 +76,39 @@ body {
 }
 .flash-notice:before {
     content: "👉🏻🗑️";
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+table {
+    border-collapse: collapse; 
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+th {
+    background-color: #a42979; 
+    color: white; 
+    padding: 12px 15px;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+td {
+    padding: 12px 15px;
+    border: 1px solid #ddd; 
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+tr:hover {
+    background-color: #e37cba; 
 }
