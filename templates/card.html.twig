@@ -4,4 +4,20 @@
 
 {% block body %}
 
+    <nav>
+        <ul>
+            <li><a href="{{ path('deck') }}">The Deck</a></li>
+            <li><a href="{{ path('draw') }}">Draw a card</a></li>
+            <li><a href="{{ path('shuffle_deck') }}">Shuffle deck</a></li>
+        </ul>
+    </nav>
+    <div> 
+        <h2>bild</h2>
+        <img src="{{ asset('img/UML.png') }}" alt="uml">
+    </div>
+    <h2>Text</h2>
+    <p>
+        Mina klasser är Card, CardGraphic och DeckOfCards dom är rellaterade genom att CardGraphic är en underklass till Card. Även att CardGraphic är rellaterad till DeckOfCards genom 
+        komposition. I Card skapar jag självaste kortet. I CardGraphic lägger jag till grafiken på korten. I DeckOfCards görs hella kortleken och den hanteras.
+    </p>
 {% endblock %}
