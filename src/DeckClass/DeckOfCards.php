@@ -1,5 +1,6 @@
 <?php 
 namespace App\DeckClass;
+use App\DeckClass\CardGraphic;
 
 class DeckOfCards
 {
@@ -16,7 +17,7 @@ class DeckOfCards
 
         foreach ($suits as $suit) {
             foreach ($symbols as $symbol) {
-                $this->cards[] = new CardGraphics($symbol, $suit);
+                $this->cards[] = new CardGraphic($suit, $symbol);
             }
         }
     }
@@ -34,10 +35,28 @@ class DeckOfCards
     }
 
     public function drawCards($nr){
+        $cardsDrawn = [];
         for ($i=0; $i<$nr; $i++){
-            $this->cardsDrawn[] = drawCard();
+            $cardsDrawn[] = array_pop($this->cards);
 
         }
         return $cardsDrawn;
     }
+
+    public function getAllCardsHTML() {
+        $cardsHTML = [];
+        foreach ($this->cards as $card) {
+            $cardsHTML[] = $card->toHTML();
+        }
+        return $cardsHTML;
+    }
+
+    public function getDrawnCardsHTML(): string {
+        $cardsHTML = [];
+        foreach ($this->cardsDrawn as $card) {
+            $cardsHTML[] = $card->toHTML();
+        }
+        return implode('', $cardsHTML);
+    }
+
 }

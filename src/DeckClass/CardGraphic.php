@@ -15,7 +15,7 @@ class CardGraphic extends Card
         $color = $colorMap[$this->getSuit()];
         $characterShow = $this->getCharacter();
 
-        return "<span style='color: $color; font-size: 2em;'>$characterShow</span>";
+        return "<span style='color: $color; font-size: 100px;'>$characterShow</span>";
 
     }
 }
