@@ -4,5 +4,36 @@
 
 {% block body %}
     <h1>API</h1>
-    <a href="{{url("api-qoute")}}">/api/quote</a>
+    <table>
+        <tr>
+            <th>Link</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><a href="{{url("api-qoute")}}">/api/quote</a></td>
+            <td>A random quote and todays date</td>
+        </tr>
+        <tr>
+            <td><a href="{{url("api-deck")}}">/api/deck</a></td>
+            <td>A card deck</td>
+        </tr>
+        <tr>
+            <td><a href="{{url("api-deck-shuffle")}}">/api/deck/shuffle</a></td>
+            <td>Shuffleing the deck</td>
+        </tr>
+        <tr>
+            <td>
+                <form action="{{url('api-deck-draw')}}" method="POST">
+                    <button type="submit">/api/deck/draw</button>
+                </form>
+            </td>
+            <td>draw one card from the deck</td>
+        </tr>
+        <tr>
+            <td>
+                /api/deck/draw/{number}
+            </td>
+            <td>draw the number of cards you chooses from the deck</td>
+        </tr>
+     <table>
 {% endblock %}
