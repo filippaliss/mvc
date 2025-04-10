@@ -21,13 +21,16 @@
                     <li><a href="{{ path('lucky_number') }}">Lucky</a></li>
                     <li><a href="{{ path('report') }}">Report</a></li>
                     <li><a href="{{ path('cards') }}">Card</a></li>
+                    <li><a href="{{ path('sessions_all') }}">Session</a></li>
                 </ul>
             </nav>
         </header>
         
         {% block body %}{% endblock %}
         <footer>
-            ye min sida
+            <ul>
+                <li><a href="{{ path('api') }}">API</a></a></li>
+            </ul>
         </footer>
     </body>
 </html>
