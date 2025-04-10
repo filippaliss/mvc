@@ -3,6 +3,10 @@
 {% block title %}Session{% endblock %}
 
 {% block body %}
+    <ul>
+        <li><a href="{{ path('sessions_delete') }}">Delete Session</a></li>
+    </ul>
+
     {% for key,value in session %}
         <p>{{ key }}: {{ dump(value)}}</p>
     {% endfor %}
