@@ -12,15 +12,15 @@ class Card
         $this->symbol = $symbol;
     }
 
-    public function getSymbol(){
+    public function getSymbol(): string{
         return $this->symbol;
     }
     
-    public function getSuit(){
+    public function getSuit(): string{
         return $this->suit;
     }
 
-    public function getCharacter(){
+    public function getCharacter(): string{
         $characterMap = [
             "hearts" => ['A' => "🂱", '2' => "🂲", '3' => "🂳", '4' => "🂴", '5' => "🂵", '6' => "🂶", '7' => "🂷", '8' => "🂸", '9' => "🂹", '10' => "🂺", 'J' => "🂻", 'Q' => "🂽", 'K' => "🂾"],
             "diamonds" => ['A' => "🃁", '2' => "🃂", '3' => "🃃", '4' => "🃄", '5' => "🃅", '6' => "🃆", '7' => "🃇", '8' => "🃈", '9' => "🃉", '10' => "🃊", 'J' => "🃋", 'Q' => "🃍", 'K' => "🃎"],

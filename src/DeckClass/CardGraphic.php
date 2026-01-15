@@ -3,7 +3,7 @@ namespace App\DeckClass;
 
 class CardGraphic extends Card
 {
-    public function toHTML()
+    public function toHTML(): string
     {
         $colorMap = [
             "hearts" => "red",
