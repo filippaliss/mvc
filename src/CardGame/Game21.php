@@ -23,20 +23,26 @@ class Game21
         $this->player->resetHand();
         $this->bank->resetHand();
 
-        $this->player->addCard($this->deck->drawCard());
-        $this->player->addCard($this->deck->drawCard());
+        if ($this->deck->drawCard() !== null) {
+            $this->player->addCard($this->deck->drawCard());
+            $this->player->addCard($this->deck->drawCard());
+        }
     }
 
     public function playerHit(): void
     {
-        $this->player->addCard($this->deck->drawCard());
+        if ($this->deck->drawCard() !== null) {
+            $this->player->addCard($this->deck->drawCard());
+        }
     }
 
     public function bankPlay(): void
     {
         while ($this->bank->getHandValue() < $this->player->getHandValue() 
                && $this->bank->getHandValue() <= 21) {
-            $this->bank->addCard($this->deck->drawCard());
+            if ($this->deck->drawCard() !== null) {
+                $this->bank->addCard($this->deck->drawCard());
+            }
         }
     }
 

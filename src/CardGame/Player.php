@@ -5,6 +5,7 @@ use App\DeckClass\CardGraphic;
 
 class Player
 {
+    /** @var CardGraphic[] */
     private array $hand = [];
 
     public function addCard(CardGraphic $card): void
@@ -12,6 +13,7 @@ class Player
         $this->hand[] = $card;
     }
 
+    /** @return CardGraphic[] */
     public function getHand(): array
     {
         return $this->hand;
