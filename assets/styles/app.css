@@ -1,31 +1,30 @@
 /* Navigation */
-ul {
+.nav {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
+    gap: 6px;
     justify-content: center;
-    background-color: #6a0dad; /* snyggare lila nyans */
+    align-items: center;
+    background-color: #6a0dad;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 0 0 10px 10px;
+    height: 55px;
 }
 
-li {
-    margin: 0;
-}
-
-li a {
+.nav li a {
     display: block;
     color: #fff;
     font-weight: 500;
     text-align: center;
-    padding: 16px 20px;
+    padding: 12px 18px;
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color .25s ease, transform .2s ease;
     border-radius: 6px;
 }
 
-li a:hover {
+.nav li a:hover {
     background-color: #ff6f61;
     transform: scale(1.05);
 }
@@ -43,6 +42,7 @@ body {
     color: #333;
 }
 
+
 /* Footer */
 footer {
     height: 40px;
@@ -57,15 +57,20 @@ footer {
 }
 
 
+/* Header / Titles */
 h1 {
     border-bottom: 4px double #ccc;
 }
 
+
+/* Background Fix */
 body {
     background: rgb(241, 239, 239);
     background-size: cover;
 }
 
+
+/* Images */
 #bildme {
     height: 300px;
     width: 300px;
@@ -77,6 +82,8 @@ body {
     height: 300px;
 }
 
+
+/* Misc */
 #magic {
     size: 60px;
     color: yellow;
@@ -87,6 +94,8 @@ body {
     color: rgb(226, 43, 165);
 }
 
+
+/* Flash Messages */
 .flash-notice {
     padding: 0.5em;
     color: #b7040a;
@@ -97,11 +106,15 @@ body {
     content: "👉🏻🗑️";
 }
 
+
+/* game21 Cards */
 .card-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
+
+/* Tables */
 table {
     border-collapse: collapse; 
     margin: 20px 0;
@@ -130,4 +143,86 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #e37cba; 
+}
+
+
+/* game21 Rule List */
+.regler {
+    list-style: none;
+    margin: 20px auto;
+    padding-left: 40px;
+    max-width: 600px;
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    color: #333;
+}
+
+.regler li {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.regler li::before {
+    content: "♣ ";
+    color: #7c3ff4;
+}
+
+
+/* game21 Action Buttons */
+.casino-actions {
+    margin: 20px 0;
+}
+
+.casino-actions .chip {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: transform .2s ease;
+}
+
+.casino-actions .chip.hit {
+    background: #4caf50;
+}
+
+.casino-actions .chip.stay {
+    background: #f44336;
+}
+
+.casino-actions .chip.start {
+    background: #4f1d5b;
+}
+
+.casino-actions .chip:hover {
+    transform: scale(1.12);
+}
+
+/* Specifik stil för ul med class idraporter */
+ul.idraporter {
+  list-style-type: none;   /* tar bort standardpunkter */
+  padding: 0;
+  text-align: center;
+}
+
+ul.idraporter li {
+  display: inline-block;   /* visa länkar horisontellt */
+  margin: 0 10px;
+}
+
+ul.idraporter a {
+  text-decoration: none;   /* ta bort understrykning */
+  background-color: #654caf;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+ul.idraporter a:hover {
+  background-color: #3b1b77;
+  transform: scale(1.05);
 }
