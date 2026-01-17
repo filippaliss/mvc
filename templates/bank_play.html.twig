@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+    <nav>
+        <ul class="nav">
+            <li><a href="{{ path('deck') }}">The Deck</a></li>
+            <li><a href="{{ path('draw') }}">Draw a card</a></li>
+            <li><a href="{{ path('shuffle_deck') }}">Shuffle deck</a></li>
+            <li><a href="{{ path('game21_start') }}">Card Game</a></li>
+        </ul>
+    </nav>
+
+    <h1>Blackjack – Bankens tur</h1>
+
+    <h2>Spelarens kort:</h2>
+    <div>{{ playerValue }}</div>
+
+    <h2>Bankens kort:</h2>
+    <div class="bank-hand">
+        {% for card in cards %}
+            {{ card|raw }}
+        {% endfor %}
+    </div>
+    <p>Värde: {{ bankValue }}</p>
+
+    <h2>Resultat:</h2>
+    <p>{{ result }}</p>
+
+    <p class="casino-actions">
+        <a href="{{ path('game21_start') }}" class="chip start">Starta nytt spel</a>
+    </p>
+{% endblock %}

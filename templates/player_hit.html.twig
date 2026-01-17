@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+    <nav>
+        <ul class="nav">
+            <li><a href="{{ path('deck') }}">The Deck</a></li>
+            <li><a href="{{ path('draw') }}">Draw a card</a></li>
+            <li><a href="{{ path('shuffle_deck') }}">Shuffle deck</a></li>
+            <li><a href="{{ path('game21_start') }}">Card Game</a></li>
+        </ul>
+    </nav>
+    <h1>Blackjack – Spelarens tur</h1>
+    <h3>
+        Blackjack är ett klassiskt kortspel där målet är att komma så nära 21 som möjligt utan att gå över. 
+        Varje spelare spelar mot dealern. Korten 2–10 är värda sitt nummer, 
+        klädda kort (knekt, dam, kung) är värda 10 och ess kan vara 1 eller 11 beroende på vad som passar handen bäst.
+    </h3>
+    <h3>Spelet börjar med att spelaren får två kort och kan sedan välja att:</h3>
+    <ul class="regler">
+        <li>Hit (ta kort) – för att försöka komma närmare 21</li>
+        <li>Stay (stanna) – om man är nöjd med sin hand</li>
+    </ul>
+    <h3>
+        Dealern måste dra kort tills handen är minst 17. 
+        Vinner gör den som är närmast 21 utan att gå över – “bust” gör att man förlorar direkt.
+    </h3>
+
+    <h2>Spelarens kort:</h2>
+    <div class="hand">
+        {% for card in cards %}
+            {{ card|raw }}
+        {% endfor %}
+    </div>
+
+    {% if playerValue > 21 %}
+        <h3>Du fick över 21! Banken vinner!</h3>
+        <p class="casino-actions">
+            <a href="{{ path('game21_start') }}" class="chip start">Starta nytt spel</a>
+        </p>
+    {% else %}
+        <p class="casino-actions">
+            <a href="{{ path('game21_player_hit') }}" class="chip hit">Hit (dra ett kort)</a>
+            <a href="{{ path('game21_bank_play') }}" class="chip stay">Stay (bankens tur)</a>
+        </p>
+    {% endif %}
+{% endblock %}
