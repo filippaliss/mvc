@@ -1,7 +1,6 @@
 <?php 
 
 namespace App\DeckClass;
-
 use App\DeckClass\CardGraphic;
 
 class DeckOfCards
@@ -16,10 +15,9 @@ class DeckOfCards
     public array $cards = [];
 
     /** @var CardGraphic[] */
-    public array $cardsDrawn = [];
+    public $cardsDrawn = [];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->suits = ['hearts', 'diamonds', 'clubs', 'spades'];
         $this->symbols = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
@@ -30,26 +28,26 @@ class DeckOfCards
         }
     }
 
-    public function shuffleDeck(): void
-    {
+    public function shuffleDeck(): void {
         shuffle($this->cards);
     }
 
-    public function drawCard(): ?CardGraphic
-    {
-        return array_pop($this->cards) ?: null;
+    public function drawCard(): ?CardGraphic {
+        $card = array_pop($this->cards);
+        if ($card instanceof CardGraphic) {
+            $this->cardsDrawn[] = $card;
+        }
+        return $card;
     }
 
-    public function getCardCount(): int
-    {
+    public function getCardCount(): int {
         return count($this->cards);
     }
 
     /**
      * @return CardGraphic[]
      */
-    public function drawCards(int $nr): array
-    {
+    public function drawCards(int $nr): array {
         $drawn = [];
 
         for ($i = 0; $i < $nr; $i++) {
@@ -66,8 +64,7 @@ class DeckOfCards
     /**
      * @return string[]
      */
-    public function getAllCardsHTML(): array
-    {
+    public function getAllCardsHTML(): array {
         $cardsHTML = [];
         foreach ($this->cards as $card) {
             $cardsHTML[] = $card->toHTML();
@@ -75,8 +72,7 @@ class DeckOfCards
         return $cardsHTML;
     }
 
-    public function getDrawnCardsHTML(): string
-    {
+    public function getDrawnCardsHTML(): string {
         $cardsHTML = [];
         foreach ($this->cardsDrawn as $card) {
             $cardsHTML[] = $card->toHTML();
