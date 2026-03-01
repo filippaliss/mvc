@@ -16,3 +16,9 @@ tools/
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+.phpdoc/
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###
