@@ -79,7 +79,82 @@
     </p>
 
     <h2 id="kmom04">Kmom04</h2>
-    <p></p>
+    <p>
+        <strong>PHPUnit och att skriva testkod</strong><br>
+        Att skriva testkod med PHPUnit var en intressant och lärorik upplevelse. 
+        Första gången kändes det lite bakvänt att skriva kod som testar annan kod, 
+        men ju mer jag arbetade med det desto mer logiskt blev det. 
+        PHPUnit är rent allmänt ett väldigt kraftfullt verktyg - det är tydligt, 
+        strukturerat och ger snabb feedback om vad som fungerar eller inte. 
+        Jag gillade särskilt hur man kan se exakt vilka tester som passar och vilka som misslyckas, 
+        och felmeddelanden är oftast tydliga nog att snabbt förstå problemet.
+    </p>
+    <p>
+        Det som verkligen slog mig var hur testning tvingar en att tänka igenom sin kod ordentligt. 
+        När man skriver tester måste man förstå exakt vad varje metod ska göra, 
+        vilka input den tar och vad den ska returnera. 
+        Jag skapade totalt 73 tester med 174 assertions för mina modellklasser, 
+        och processen hjälpte mig faktiskt hitta två buggar i min befintliga kod!
+    </p>
+    <p>
+        <strong>Kodtäckning</strong><br>
+        Jag lyckades få en mycket bra kodtäckning på mina modellklasser. 
+        För Card, CardGraphic, DeckOfCards, Player, Bank och Game21 nådde jag över 90% kodtäckning. 
+        Det som hjälpte var att skriva tester för både "happy path" (när allt fungerar som det ska) 
+        och edge cases (tom deck, flera ess i handen, bust-scenarion etc.). 
+        HTML coverage-rapporten var användbar för att se exakt vilka rader som inte testades, 
+        så man kunde fokusera på att täcka de delarna.
+    </p>
+    <p>
+        <strong>Testbar kod</strong><br>
+        Jag upplever att mina modellklasser (Card, Player, Bank, DeckOfCards) är relativt testbara. 
+        De har tydliga ansvarsområden, tar emot input via konstruktor eller metoder, 
+        och returnerar konkreta värden. Det gör dem lätta att testa.
+        
+        Men när det kommer till mina controllers är det en helt annan historia. 
+        De är betydligt svårare att testa eftersom de är hårt kopplade till Symfony-ramverket, 
+        använder sessions, och returnerar Response-objekt. 
+        För att göra controllers testbara skulle man behöva använda dependency injection mer konsekvent, 
+        mocka beroenden, och kanske separera logiken från själva route-hanteringen.
+    </p>
+    <p>
+        <strong>Omskrivning för testbarhet</strong><br>
+        Ja, jag skrev faktiskt om flera delar av min kod! Det mest uppenbara var i Game21.php 
+        där jag upptäckte att min start()-metod hade en bugg - den drog kort flera gånger 
+        men adderade inte korten korrekt till både spelaren och banken. 
+        Efter att ha skrivit tester och sett dem misslyckas, 
+        refaktorerade jag metoden för att vara mer explicit: 
+        varje kort dras och sparas i en variabel innan det läggs till, 
+        vilket gjorde koden både mer läsbar och testbar.
+
+        Jag fixade också en bug i Bank.php där ess-beräkningen använde -13 istället för -10, 
+        vilket testerna snabbt pekade ut. 
+        Detta är ett perfekt exempel på hur tester hjälper till att hitta logiska fel 
+        som lätt kan missas vid manuell testning.
+    </p>
+    <p>
+        <strong>Testbar kod = ren kod?</strong><br>
+        Ja, absolut! Jag anser definitivt att testbar kod ofta är synonymt med "snygg och ren kod". 
+        När kod är testbar betyder det oftast att den:
+        <ul>
+            <li>Har ett tydligt ansvarsområde (Single Responsibility Principle)</li>
+            <li>Har få beroenden eller väl definierade beroenden</li>
+            <li>Är lätt att förstå vad den gör</li>
+            <li>Inte har dold state eller bieffekter</li>
+            <li>Returnerar förutsägbara resultat</li>
+        </ul>
+        Om kod är svår att testa är det ofta ett tecken på att den behöver refaktoreras. 
+        Testbarhet blir som en kvalitetsindikator - om det är lätt att testa, 
+        är koden troligen välstrukturerad, modulär och lättförståelig.
+    </p>
+    <p>
+        <strong>TIL (Today I Learned)</strong><br>
+        Min TIL för detta kmom är att testning inte bara är till för att verifiera att kod fungerar, 
+        utan det är också ett fantastiskt verktyg för att förbättra kodkvaliteten. 
+        Tester tvingar dig att skriva bättre kod från början, 
+        och de agerar som dokumentation för hur koden ska användas. 
+        Plus att det är otroligt tillfredsställande att se alla 73 tester bli gröna! ✓
+    </p>
 
     <h2 id="kmom05">Kmom05</h2>
     <p></p>
