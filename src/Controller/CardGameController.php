@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\CardGame\Game21;
 
-
 class CardGameController extends AbstractController
 {
     #[Route('/card/game21/start', name: 'game21_start')]
@@ -29,7 +28,7 @@ class CardGameController extends AbstractController
 
         return $this->render('start.html.twig', [
             'cards' => $cardsHTML,
-            'playerValue' => $game->getPlayer()->getHandValue()
+            'playerValue' => $game->getPlayer()->getHandValue(),
         ]);
     }
 
@@ -58,7 +57,7 @@ class CardGameController extends AbstractController
 
         return $this->render('player_hit.html.twig', [
             'cards' => $cardsHTML,
-            'playerValue' => $game->getPlayer()->getHandValue()
+            'playerValue' => $game->getPlayer()->getHandValue(),
         ]);
     }
 
@@ -99,7 +98,7 @@ class CardGameController extends AbstractController
             'cards' => $cardsHTML,
             'bankValue' => $bankValue,
             'playerValue' => $playerValue,
-            'result' => $result
+            'result' => $result,
         ]);
     }
 }

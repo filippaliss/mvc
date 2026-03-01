@@ -17,16 +17,16 @@ class ApiController extends AbstractController
     public function number(): Response
     {
         $qoute = [
-        "Im polish, try me russian bitch",
-        "Nomnom betyder stoppa in i munnen",
-        "BSK - Bilar Suger Kuk"
+            "Im polish, try me russian bitch",
+            "Nomnom betyder stoppa in i munnen",
+            "BSK - Bilar Suger Kuk",
         ];
         $randomQoute = $qoute[array_rand($qoute)];
 
         $response = new JsonResponse(
             [
                 "quote" => $randomQoute,
-                "date" => date("Y-m-d H-i-s")
+                "date" => date("Y-m-d H-i-s"),
             ]
         );
 
@@ -50,16 +50,15 @@ class ApiController extends AbstractController
         $cards = $session->get('cards', $deckOfNew);
         $session->set('cards', $cards);
         $cardsHtml = $cards->getAllCardsHTML();
-        
+
         $strippedCards = [];
-        foreach($cardsHtml as $cardHtml)
-        {
+        foreach ($cardsHtml as $cardHtml) {
             $strippedCards[] = strip_tags($cardHtml);
         }
-    
+
         $response = new JsonResponse(
             [
-                "deck" => $strippedCards
+                "deck" => $strippedCards,
             ]
         );
 
@@ -79,14 +78,13 @@ class ApiController extends AbstractController
         $cardsHtml = $cards->getAllCardsHTML();
 
         $strippedCards = [];
-        foreach($cardsHtml as $cardHtml)
-        {
+        foreach ($cardsHtml as $cardHtml) {
             $strippedCards[] = strip_tags($cardHtml);
         }
-    
+
         $response = new JsonResponse(
             [
-                "deck" => $strippedCards
+                "deck" => $strippedCards,
             ]
         );
 
@@ -94,7 +92,7 @@ class ApiController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
-    }   
+    }
 
     #[Route("/api/deck/draw", name: "api-deck-draw")]
     public function deck_draw(Request $request): Response
@@ -106,13 +104,13 @@ class ApiController extends AbstractController
         $cardsHtml = $result->toHTML();
 
         $strippedCards = [];
-        
+
         $strippedCards[] = strip_tags($cardsHtml);
-        
-    
+
+
         $response = new JsonResponse(
             [
-                "deck" => $strippedCards
+                "deck" => $strippedCards,
             ]
         );
 
@@ -132,14 +130,13 @@ class ApiController extends AbstractController
         $cardsHtml = array_map(fn($card) => $card->toHTML(), $cards);
 
         $strippedCards = [];
-        foreach($cardsHtml as $cardHtml)
-        {
+        foreach ($cardsHtml as $cardHtml) {
             $strippedCards[] = strip_tags($cardHtml);
         }
-    
+
         $response = new JsonResponse(
             [
-                "deck" => $strippedCards
+                "deck" => $strippedCards,
             ]
         );
 

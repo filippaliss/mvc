@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; 
-use Symfony\Component\HttpFoundation\Response; 
-use Symfony\Component\Routing\Annotation\Route; 
-use Symfony\Component\HttpFoundation\Request; 
-use Symfony\Component\HttpFoundation\Session\SessionInterface; 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\DeckClass\DeckOfCards;
 
 class CardController extends AbstractController
@@ -44,7 +44,7 @@ class CardController extends AbstractController
         $deck = $this->getDeckFromSession($request);
 
         return $this->render('card_deck.html.twig', [
-            'cards' => $deck->getAllCardsHTML()
+            'cards' => $deck->getAllCardsHTML(),
         ]);
     }
 
@@ -59,7 +59,7 @@ class CardController extends AbstractController
         $session->set('cards', serialize($deck));
 
         return $this->render('card_shuffle_deck.html.twig', [
-            'cards' => $deck->getAllCardsHTML()
+            'cards' => $deck->getAllCardsHTML(),
         ]);
     }
 
@@ -76,7 +76,7 @@ class CardController extends AbstractController
         $cardHTML = $drawnCard ? $drawnCard->toHTML() : 'Inga kort kvar';
 
         return $this->render('card_draw.html.twig', [
-            'cards' => $cardHTML
+            'cards' => $cardHTML,
         ]);
     }
 
@@ -95,7 +95,7 @@ class CardController extends AbstractController
             : array_map(fn($card) => $card->toHTML(), $drawnCards);
 
         return $this->render('card_draw_nr.html.twig', [
-            'cards' => $cardsHTML
+            'cards' => $cardsHTML,
         ]);
     }
 
