@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}API - En biblioteksbok{% endblock %}
+
+{% block body %}
+    <h1>📖 Biblioteks API - En bok</h1>
+    
+    <p><a href="{{ path('api') }}">← Tillbaka till API</a></p>
+
+    <p>Denna endpoint returnerar information om en specifik bok i JSON-format baserat på ISBN.</p>
+
+    <h2>Endpoint</h2>
+    <code>/api/library/book/{isbn}</code>
+
+    <h2>Metod</h2>
+    <p>GET</p>
+
+    <h2>Exempel</h2>
+    <p><a href="{{ url('api_library_book', {'isbn': '978-A001'}) }}">/api/library/book/978-A001</a></p>
+
+    <h2>Svar exempel</h2>
+    <pre>
+{
+  "book": {
+    "isbn": "978-A001",
+    "title": "Boken om böcker",
+    "author": "Admin Istratör",
+    "image": "/img/book1.jpg"
+  }
+}
+    </pre>
+
+    <h2>Faktisk respons</h2>
+    <pre id="actual-response">Hämtar data...</pre>
+
+    <script>
+        // Get ISBN from URL query parameter or use default
+        const params = new URLSearchParams(window.location.search);
+        const isbn = params.get('isbn') || '978-A001';
+        
+        fetch(`/api/library/book/${encodeURIComponent(isbn)}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('actual-response').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('actual-response').textContent = 'Error: ' + error.message;
+            });
+    </script>
+
+{% endblock %}

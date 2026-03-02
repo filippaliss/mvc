@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Bibliotek - Alla böcker{% endblock %}
+
+{% block body %}
+    <div class="library-container">
+        <h1 class="library-header">Alla böcker</h1>
+        
+        <div class="library-nav">
+            <a href="{{ path('library_index') }}">← Hem</a>
+            <a href="{{ path('library_create') }}">+ Lägg till ny bok</a>
+        </div>
+
+        {% if books is empty %}
+            <p>Ingen böcker finns ännu i biblioteket.</p>
+        {% else %}
+            <table class="books-table">
+                <thead>
+                    <tr>
+                        <th>Titel</th>
+                        <th>Författare</th>
+                        <th>ISBN</th>
+                        <th>Bild</th>
+                        <th>Åtgärder</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                    <tr>
+                        <td><a href="{{ path('library_book', {'isbn': book.isbn}) }}">{{ book.title }}</a></td>
+                        <td>{{ book.author }}</td>
+                        <td><code>{{ book.isbn }}</code></td>
+                        <td>
+                            {% if book.image %}
+                                <img src="{{ book.image }}" alt="{{ book.title }}" class="book-img-thumb">
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="book-actions">
+                                <a href="{{ path('library_edit', {'isbn': book.isbn}) }}">✏️ Redigera</a>
+                                <form action="{{ path('library_delete', {'isbn': book.isbn}) }}" method="POST" class="book-delete-form">
+                                    <button type="submit" class="delete-button" onclick="return confirm('Är du säker på att du vill radera denna bok?')">🗑️ Radera</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+    {% for message in app.flashes('success') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    {% for message in app.flashes('error') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endblock %}

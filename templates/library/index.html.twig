@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Bibliotek - Hem{% endblock %}
+
+{% block body %}
+    <div class="library-container">
+        <h1 class="library-header">Biblioteket</h1>
+        
+        <p>Här kan du hantera böcker i ditt personliga bibliotek.</p>
+        
+        <div class="library-nav">
+            <a href="{{ path('library_books') }}">Se alla böcker</a>
+            <a href="{{ path('library_create') }}">Lägg till ny bok</a>
+        </div>
+
+        <h2>Om biblioteket</h2>
+        <p>Du kan klicka på en bok för att se mer detaljer, redigera eller ta bort böcker. Använd formuläret för att lägga till nya titlar i ditt bibliotek.</p>
+        
+        <h2>Admin</h2>
+        <form action="{{ path('library_reset') }}" method="POST" class="library-reset-form">
+            <button type="submit" class="btn btn-danger">Återställ biblioteket</button>
+        </form>
+
+        <script>
+            document.querySelector('.library-reset-form').addEventListener('submit', function(e) {
+                if (!confirm('Är du säker på att du vill återställa biblioteket? All data raderas.')) {
+                    e.preventDefault();
+                }
+            });
+        </script>
+
+    {% for message in app.flashes('success') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    {% for message in app.flashes('error') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endblock %}

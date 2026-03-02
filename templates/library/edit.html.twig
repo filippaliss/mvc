@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Bibliotek - Redigera bok{% endblock %}
+
+{% block body %}
+    <div class="library-container">
+        <h1 class="library-header">Redigera bok</h1>
+        
+        <div class="library-nav">
+            <a href="{{ path('library_books') }}">← Tillbaka</a>
+        </div>
+
+        {% if errors is defined and errors is not empty %}
+            <div class="error-list">
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form action="{{ path('library_edit_submit', {'isbn': book.isbn|default('')}) }}" method="POST" style="max-width: 600px; margin: 20px auto; text-align: left;">
+            <div class="form-group">
+                <label for="title">Titel <span class="required">*</span></label>
+                <input type="text" id="title" name="title" required value="{{ book.title|default('') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="isbn">ISBN <span class="required">(kan inte ändras)</span></label>
+                <input type="text" id="isbn" name="isbn" disabled value="{{ book.isbn|default('') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="author">Författare <span class="required">*</span></label>
+                <input type="text" id="author" name="author" required value="{{ book.author|default('') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="image">Bokens bild-URL</label>
+                <input type="text" id="image" name="image" value="{{ book.image|default('') }}">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Spara ändringar</button>
+                <a href="{{ path('library_book', {'isbn': book.isbn|default('')}) }}">Avbryt</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

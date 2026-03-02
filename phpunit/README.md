@@ -18,20 +18,6 @@ This article and exercise help you to get going with unit testing and phpunit fo
 
 Start by walking through the article and verifying that the examples work as explained. At the end of the article are some exercises that you can practice on your own.
 
-<!--
-TODO
-
-* Add slideshow explaining the details on phpunit, as an intro to the exercise
-* Improve, or is it already too large?
-    * Perhaps add another exercise that is optional that covers more advanced topics?
-
-* Test class doing print (mock or rewrite)
-* Setup and teardown
-* Test with arrays of values
-* Make tests depend on each other
-
--->
-
 
 
 <!--

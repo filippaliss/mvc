@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}API - Bibliotek böcker{% endblock %}
+
+{% block body %}
+    <h1>Biblioteks API - Alla böcker</h1>
+    
+    <p><a href="{{ path('api') }}">← Tillbaka till API</a></p>
+
+    <p>Denna endpoint returnerar alla böcker i biblioteket i JSON-format.</p>
+
+    <h2>Endpoint</h2>
+    <code>/api/library/books</code>
+
+    <h2>Metod</h2>
+    <p>GET</p>
+
+    <h2>Svar exempel</h2>
+    <pre id="response-example">
+{
+  "books": [
+    {
+      "isbn": "978-A001",
+      "title": "Boken om böcker",
+      "author": "Admin Istratör",
+      "image": "/img/book1.jpg"
+    },
+    ...
+  ]
+}
+    </pre>
+
+    <h2>Faktisk respons</h2>
+    <pre id="actual-response">Hämtar data...</pre>
+
+    <script>
+        fetch('/api/library/books')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('actual-response').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('actual-response').textContent = 'Error: ' + error.message;
+            });
+    </script>
+
+{% endblock %}
