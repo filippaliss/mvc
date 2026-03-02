@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="{{ asset('img/glider.svg') }}">
         {% block stylesheets %}
@@ -22,15 +23,20 @@
                     <li><a href="{{ path('report') }}">Report</a></li>
                     <li><a href="{{ path('cards') }}">Card</a></li>
                     <li><a href="{{ path('sessions_all') }}">Session</a></li>
+                    <li><a href="{{ path('library_index') }}">Bibliotek</a></li>
                 </ul>
             </nav>
         </header>
         
-        {% block body %}{% endblock %}
+        <main class="container">
+            {% block body %}{% endblock %}
+        </main>
+
         <footer>
             <ul>
-                <li><a href="{{ path('api') }}">API</a></a></li>
+                <li><a href="{{ path('api') }}">API</a></li>
             </ul>
+            <p>&copy; {{ "now"|date("Y") }} Filippa Lissäng Öst</p>
         </footer>
     </body>
 </html>

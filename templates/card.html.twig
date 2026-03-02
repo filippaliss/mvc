@@ -1,23 +1,40 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Card{% endblock %}
+{% block title %}Card - MVC Course{% endblock %}
 
 {% block body %}
-    <nav>
-        <ul class="nav">
-            <li><a href="{{ path('deck') }}">The Deck</a></li>
-            <li><a href="{{ path('draw') }}">Draw a card</a></li>
-            <li><a href="{{ path('shuffle_deck') }}">Shuffle deck</a></li>
-            <li><a href="{{ path('game21_start') }}">Card Game</a></li>
-        </ul>
-    </nav>
-    <div> 
-        <h2>bild</h2>
-        <img src="{{ asset('img/UML.png') }}" alt="uml">
+    <div class="card-page">
+        <div class="content-wrapper">
+            <h1>Kortlek-modulen</h1>
+            
+            <div class="card-nav">
+                <div class="card-nav-links">
+                    <a href="{{ path('deck') }}">The Deck</a>
+                    <a href="{{ path('draw') }}">Draw a card</a>
+                    <a href="{{ path('shuffle_deck') }}">Shuffle deck</a>
+                    <a href="{{ path('game21_start') }}">Card Game</a>
+                </div>
+            </div>
+
+            <div class="card-image">
+                <h2>Klassdiagram</h2>
+                <img src="{{ asset('img/UML.png') }}" alt="UML Diagram for Card Classes">
+            </div>
+
+            <div class="card-description">
+                <h2>Om modulen</h2>
+                <p>
+                    Denna modul innehåller tre relaterade klasser: <strong>Card</strong>, <strong>CardGraphic</strong> och <strong>DeckOfCards</strong>.
+                </p>
+                
+                <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                    <li><strong>Card</strong> - Grundklassen som representerar ett individuellt kort med värde och suit</li>
+                    <li><strong>CardGraphic</strong> - En underklass till Card som lägger till grafisk representation</li>
+                    <li><strong>DeckOfCards</strong> - Hanterar en hel kortlek genom komposition med CardGraphic-objekt</li>
+                </ul>
+
+                <p>Klasserna är relaterade genom arv (CardGraphic ärver från Card) och komposition (DeckOfCards innehåller CardGraphic-objekt).</p>
+            </div>
+        </div>
     </div>
-    <h2>Text</h2>
-    <p>
-        Mina klasser är Card, CardGraphic och DeckOfCards dom är rellaterade genom att CardGraphic är en underklass till Card. Även att CardGraphic är rellaterad till DeckOfCards genom 
-        komposition. I Card skapar jag självaste kortet. I CardGraphic lägger jag till grafiken på korten. I DeckOfCards görs hella kortleken och den hanteras.
-    </p>
 {% endblock %}

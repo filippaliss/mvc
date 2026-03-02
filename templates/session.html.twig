@@ -1,14 +1,28 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Session{% endblock %}
+{% block title %}Session - MVC Course{% endblock %}
 
 {% block body %}
-    <ul class="nav">
-        <li><a href="{{ path('sessions_delete') }}">Delete Session</a></li>
-    </ul>
+    <div class="session-page">
+        <div class="content-wrapper">
+            <h1>Session Information</h1>
 
-    {% for key,value in session %}
-        <p>{{ key }}: {{ dump(value)}}</p>
-    {% endfor %}
-    {{ include('flash.html.twig') }}
+            <div class="session-nav">
+                <div class="session-nav-links">
+                    <a href="{{ path('sessions_delete') }}">Delete Session</a>
+                </div>
+            </div>
+
+            <div class="session-content">
+                {% for key,value in session %}
+                    <h3>{{ key }}</h3>
+                    <div class="session-dump">
+                        {{ dump(value) }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {{ include('flash.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

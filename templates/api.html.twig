@@ -35,5 +35,13 @@
             </td>
             <td>draw the number of cards you chooses from the deck</td>
         </tr>
-     <table>
+        <tr>
+            <td><a href="{{url('api_library_books')}}">api/library/books</a></td>
+            <td>Get all books from the library in JSON format</td>
+        </tr>
+        <tr>
+            <td><a href="{{url('api_library_book', {'isbn': '978-A001'})}}">api/library/book/{isbn}</a></td>
+            <td>Get a specific book by ISBN number - example link provided</td>
+        </tr>
+     </table>
 {% endblock %}
