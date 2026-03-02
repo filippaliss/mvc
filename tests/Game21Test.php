@@ -68,12 +68,12 @@ class Game21Test extends TestCase
     public function testPlayerHit(): void
     {
         $this->game->start();
-        $playerInitialHandSize = count($this->game->getPlayer()->getHand());
+        $initialHandSize = count($this->game->getPlayer()->getHand());
 
         $this->game->playerHit();
 
         $playerNewHandSize = count($this->game->getPlayer()->getHand());
-        $this->assertGreaterThanOrEqual($playerInitialHandSize, $playerNewHandSize);
+        $this->assertGreaterThanOrEqual($initialHandSize, $playerNewHandSize);
     }
 
     public function testBankPlay(): void
@@ -127,7 +127,6 @@ class Game21Test extends TestCase
         // Second game (new instance)
         $game2 = new Game21();
         $game2->start();
-        $secondRound = $game2->getDeck()->getCardCount();
 
         // Different games should have independent card counts
         $this->assertLessThan(52, $firstRound);

@@ -66,7 +66,6 @@ class DeckOfCardsTest extends TestCase
 
     public function testShuffleDeck(): void
     {
-        $deck2 = new DeckOfCards();
         $this->deck->shuffleDeck();
         
         // The order should be different (with very high probability)

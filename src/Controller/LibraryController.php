@@ -33,7 +33,11 @@ class LibraryController extends AbstractController
 
     private function booksFilePath(): string
     {
-        return $this->getParameter('kernel.project_dir') . '/var/library_books.json';
+        $projectDir = $this->getParameter('kernel.project_dir');
+        if (!is_string($projectDir)) {
+            throw new \RuntimeException('kernel.project_dir parameter must be a string');
+        }
+        return $projectDir . '/var/library_books.json';
     }
 
     /**
@@ -60,7 +64,7 @@ class LibraryController extends AbstractController
             return self::SEED_BOOKS;
         }
 
-        usort($books, static fn(array $a, array $b): int => strcasecmp($a['title'], $b['title']));
+        usort($books, static fn(array $bookA, array $bookB): int => strcasecmp($bookA['title'], $bookB['title']));
         return $books;
     }
 
@@ -279,9 +283,12 @@ class LibraryController extends AbstractController
             return $this->redirectToRoute('library_books');
         }
 
-        $books[$index]['title'] = $title;
-        $books[$index]['author'] = $author;
-        $books[$index]['image'] = $image;
+        $books[$index] = [
+            'isbn' => $isbn,
+            'title' => $title,
+            'author' => $author,
+            'image' => $image,
+        ];
         $this->saveBooks($books);
 
         $this->addFlash('success', 'Boken uppdaterades.');
@@ -299,6 +306,7 @@ class LibraryController extends AbstractController
         $index = $this->findBookIndexByIsbn($books, $isbn);
         if ($index >= 0) {
             unset($books[$index]);
+            $books = array_values($books); // Re-index array after unset
             $this->saveBooks($books);
         }
 
