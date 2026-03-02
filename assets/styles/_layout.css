@@ -1,0 +1,112 @@
+/* ===== GLOBAL BODY & LAYOUT ===== */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-primary);
+    background-color: var(--beige-light2);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+main {
+    flex: 1;
+    max-width: 100%;
+}
+
+/* Container for main content */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: 50px 40px;
+    margin: 40px 0;
+    box-shadow: var(--shadow-small);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1 {
+    font-size: 2.8em;
+    color: var(--brown-dark);
+    margin: 30px 0 20px 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--brown-medium);
+    padding-bottom: 15px;
+}
+
+h2 {
+    font-size: 2em;
+    color: var(--brown-medium);
+    margin: 25px 0 15px 0;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: var(--brown-light);
+    margin: 20px 0 10px 0;
+    font-weight: 500;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin: 15px 0;
+}
+
+a {
+    color: var(--brown-dark);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--accent-warm);
+    text-decoration: underline;
+}
+
+/* ===== IMAGES ===== */
+#bildme {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-large);
+    border: 4px solid var(--brown-medium);
+    margin: 30px auto;
+    transition: transform var(--transition-normal);
+}
+
+#bildme:hover {
+    transform: scale(1.05);
+}
+
+#bildmvc {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    margin: 20px auto;
+    max-height: 400px;
+}
+
+img[src*="UML"] {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    margin: 20px auto;
+}

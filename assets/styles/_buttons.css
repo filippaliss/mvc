@@ -1,0 +1,75 @@
+/* ===== BUTTONS ===== */
+button {
+    font-family: var(--font-primary);
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-normal);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-medium) 100%);
+    color: var(--white);
+    box-shadow: var(--shadow-small);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-secondary {
+    background-color: var(--beige-light);
+    color: var(--brown-dark);
+    border: 2px solid var(--brown-dark);
+}
+
+.btn-secondary:hover {
+    background-color: var(--brown-dark);
+    color: var(--white);
+    border-color: var(--brown-dark);
+    transform: translateY(-2px);
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-medium) 100%);
+    color: var(--white);
+    font-weight: 600;
+    box-shadow: var(--shadow-small);
+}
+
+.btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    background: linear-gradient(135deg, var(--brown-medium) 0%, var(--brown-light) 100%);
+}
+
+.btn-danger {
+    background-color: #DC2626;
+    color: var(--white);
+    box-shadow: var(--shadow-small);
+}
+
+.btn-danger:hover {
+    background-color: #991B1B;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
