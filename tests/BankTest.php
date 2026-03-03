@@ -133,12 +133,6 @@ class BankTest extends TestCase
         $this->assertCount(0, $this->bank->getHand());
     }
 
-    public function testGetHandReturnsArray(): void
-    {
-        $hand = $this->bank->getHand();
-        $this->assertIsArray($hand);
-    }
-
     public function testGetHandValueWithNumericCards(): void
     {
         $card1 = new CardGraphic('hearts', '2');

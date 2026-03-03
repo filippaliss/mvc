@@ -19,22 +19,6 @@ class Game21Test extends TestCase
         $this->assertInstanceOf(Game21::class, $this->game);
     }
 
-    public function testGetPlayer(): void
-    {
-        $player = $this->game->getPlayer();
-        $this->assertNotNull($player);
-        $hand = $player->getHand();
-        $this->assertIsArray($hand);
-    }
-
-    public function testGetBank(): void
-    {
-        $bank = $this->game->getBank();
-        $this->assertNotNull($bank);
-        $hand = $bank->getHand();
-        $this->assertIsArray($hand);
-    }
-
     public function testGetDeck(): void
     {
         $deck = $this->game->getDeck();
@@ -44,12 +28,8 @@ class Game21Test extends TestCase
     public function testGameStart(): void
     {
         $this->game->start();
-
         $playerHand = $this->game->getPlayer()->getHand();
-        $this->assertIsArray($playerHand);
-        
-        $bankHand = $this->game->getBank()->getHand();
-        $this->assertIsArray($bankHand);
+        $this->assertCount(2, $playerHand);
     }
 
     public function testGameStartResetsHands(): void

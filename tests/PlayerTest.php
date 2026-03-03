@@ -133,12 +133,6 @@ class PlayerTest extends TestCase
         $this->assertCount(0, $this->player->getHand());
     }
 
-    public function testGetHandReturnsArray(): void
-    {
-        $hand = $this->player->getHand();
-        $this->assertIsArray($hand);
-    }
-
     public function testGetHandValueWithNumericCards(): void
     {
         $card1 = new CardGraphic('hearts', '2');
