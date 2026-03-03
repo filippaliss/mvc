@@ -32,7 +32,11 @@
                         <td><code>{{ book.isbn }}</code></td>
                         <td>
                             {% if book.image %}
-                                <img src="{{ book.image }}" alt="{{ book.title }}" class="book-img-thumb">
+                                <img src="{{ asset(book.image) }}" alt="{{ book.title }}" class="book-img-thumb">
+                            {% else %}
+                                <div class="book-img-thumb book-img-placeholder" aria-label="Ingen bild tillgänglig">
+                                    Ingen bild
+                                </div>
                             {% endif %}
                         </td>
                         <td>

@@ -15,19 +15,19 @@ class LibraryController extends AbstractController
             'title' => 'Mio min Mio',
             'isbn' => '9789129688313',
             'author' => 'Astrid Lindgren',
-            'image' => '/img/book-mio.jpg',
+            'image' => 'img/book-mio.jpg',
         ],
         [
             'title' => 'Dune',
             'isbn' => '9780441172719',
             'author' => 'Frank Herbert',
-            'image' => '/img/book-dune.jpg',
+            'image' => 'img/book-dune.jpg',
         ],
         [
             'title' => 'The Hobbit',
             'isbn' => '9780261103344',
             'author' => 'J.R.R. Tolkien',
-            'image' => '/img/book-hobbit.jpg',
+            'image' => 'img/book-hobbit.jpg',
         ],
     ];
 
@@ -116,7 +116,11 @@ class LibraryController extends AbstractController
     private function normalizeImage(?string $image): string
     {
         $value = trim((string) $image);
-        return $value !== '' ? $value : '/img/book-placeholder.jpg';
+        if ($value === '') {
+            return '';
+        }
+
+        return ltrim($value, '/');
     }
 
     /**

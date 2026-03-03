@@ -14,7 +14,11 @@
 
         <div class="book-details">
             {% if book.image %}
-                <img src="{{ book.image }}" alt="{{ book.title }}">
+                <img src="{{ asset(book.image) }}" alt="{{ book.title }}">
+            {% else %}
+                <div class="book-image-placeholder" aria-label="Ingen bild tillgänglig">
+                    Ingen bild tillgänglig
+                </div>
             {% endif %}
             
             <h1>{{ book.title }}</h1>
