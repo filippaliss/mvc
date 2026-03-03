@@ -49,8 +49,8 @@ class CardController extends AbstractController
     }
 
     // Shuffla kortleken
-    #[Route('/card/deck/shuffle', name: "shuffle_deck")]
-    public function shuffle_deck(Request $request): Response
+    #[Route('/card/deck/shuffle', name: "shuffleDeck")]
+    public function shuffleDeck(Request $request): Response
     {
         $session = $request->getSession();
         $deck = $this->getDeckFromSession($request);
@@ -58,7 +58,7 @@ class CardController extends AbstractController
         $deck->shuffleDeck();
         $session->set('cards', serialize($deck));
 
-        return $this->render('card_shuffle_deck.html.twig', [
+        return $this->render('card_shuffleDeck.html.twig', [
             'cards' => $deck->getAllCardsHTML(),
         ]);
     }
@@ -81,8 +81,8 @@ class CardController extends AbstractController
     }
 
     // Dra flera kort
-    #[Route('/card/deck/draw/{number}', name: "draw_nr")]
-    public function draw_nr(Request $request, int $number): Response
+    #[Route('/card/deck/draw/{number}', name: "drawNr")]
+    public function drawNr(Request $request, int $number): Response
     {
         $session = $request->getSession();
         $deck = $this->getDeckFromSession($request);
@@ -94,7 +94,7 @@ class CardController extends AbstractController
             ? ['Inga kort kvar']
             : array_map(fn($card) => $card->toHTML(), $drawnCards);
 
-        return $this->render('card_draw_nr.html.twig', [
+        return $this->render('card_drawNr.html.twig', [
             'cards' => $cardsHTML,
         ]);
     }

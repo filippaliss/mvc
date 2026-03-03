@@ -136,20 +136,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ApiController.html#method_deck"
         },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003Adeck_shuffle\u0028\u0029",
-            "name": "deck_shuffle",
+            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AdeckShuffle\u0028\u0029",
+            "name": "deckShuffle",
             "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_deck_shuffle"
+            "url": "classes/App-Controller-ApiController.html#method_deckShuffle"
         },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003Adeck_draw\u0028\u0029",
-            "name": "deck_draw",
+            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AdeckDraw\u0028\u0029",
+            "name": "deckDraw",
             "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_deck_draw"
+            "url": "classes/App-Controller-ApiController.html#method_deckDraw"
         },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003Adeck_draw_nr\u0028\u0029",
-            "name": "deck_draw_nr",
+            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AdeckdrawNr\u0028\u0029",
+            "name": "deckdrawNr",
             "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_deck_draw_nr"
+            "url": "classes/App-Controller-ApiController.html#method_deckdrawNr"
         },                {
             "fqsen": "\\App\\Controller\\CardController",
             "name": "CardController",
@@ -176,20 +176,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardController.html#method_deck"
         },                {
-            "fqsen": "\\App\\Controller\\CardController\u003A\u003Ashuffle_deck\u0028\u0029",
-            "name": "shuffle_deck",
+            "fqsen": "\\App\\Controller\\CardController\u003A\u003AshuffleDeck\u0028\u0029",
+            "name": "shuffleDeck",
             "summary": "",
-            "url": "classes/App-Controller-CardController.html#method_shuffle_deck"
+            "url": "classes/App-Controller-CardController.html#method_shuffleDeck"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003Adraw\u0028\u0029",
             "name": "draw",
             "summary": "",
             "url": "classes/App-Controller-CardController.html#method_draw"
         },                {
-            "fqsen": "\\App\\Controller\\CardController\u003A\u003Adraw_nr\u0028\u0029",
-            "name": "draw_nr",
+            "fqsen": "\\App\\Controller\\CardController\u003A\u003AdrawNr\u0028\u0029",
+            "name": "drawNr",
             "summary": "",
-            "url": "classes/App-Controller-CardController.html#method_draw_nr"
+            "url": "classes/App-Controller-CardController.html#method_drawNr"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003AgetDeckFromSession\u0028\u0029",
             "name": "getDeckFromSession",

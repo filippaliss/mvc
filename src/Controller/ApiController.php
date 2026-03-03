@@ -69,7 +69,7 @@ class ApiController extends AbstractController
     }
 
     #[Route("/api/deck/shuffle", name: "api-deck-shuffle")]
-    public function deck_shuffle(Request $request): Response
+    public function deckShuffle(Request $request): Response
     {
         $session = $request->getSession();
         $cards = $session->get('cards', []);
@@ -95,7 +95,7 @@ class ApiController extends AbstractController
     }
 
     #[Route("/api/deck/draw", name: "api-deck-draw")]
-    public function deck_draw(Request $request): Response
+    public function deckDraw(Request $request): Response
     {
         $session = $request->getSession();
         $cards = $session->get('cards', []);
@@ -121,7 +121,7 @@ class ApiController extends AbstractController
     }
 
     #[Route("/api/deck/draw/{number}", name: "api-deck-draw-nr")]
-    public function deck_draw_nr(Request $request, int $number): Response
+    public function deckdrawNr(Request $request, int $number): Response
     {
         $session = $request->getSession();
         $deck = $session->get('cards', []);
