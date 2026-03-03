@@ -71,7 +71,35 @@
 
             <div class="report-section">
                 <h2 id="kmom05">Kmom05 - API & JSON</h2>
-                <p>Redovisningstext för kmom05 kommer här...</p>
+                <p>
+                    <strong>Symfony och Doctrine:</strong> Att jobba med Symfony och få in Doctrine ORM kändes som ett stort steg framåt för att hantera databaser på ett strukturerat sätt. Jag märkte ganska snabbt att MVC-ramverket kräver mycket "plumbing" − lagning, konfiguration, routing, templates − vilket kan kännas överväldigande ibland. Men när allt väl sitter på plats blir systemet väldigt kraftfullt.
+                </p>
+                <p>
+                    <strong>Min applikation - Bokbiblioteket:</strong> Jag byggde ett enkelt bokbibliotek med full CRUD-funktionalitet för att hantera böcker. Användaren kan lägga till, visa, redigera och ta bort böcker. För användargränssnittet fokuserade jag på:
+                </p>
+                <ul>
+                    <li>Tydliga knappar och navigationslänkar mellan Create, Read, Update, Delete</li>
+                    <li>Valideringsmeddelanden när något går fel − t.ex. om ISBN redan finns</li>
+                    <li>Bokbilders visning och standardbild för böcker utan bild</li>
+                    <li>Bekräftelsedialog före borttagning av böcker</li>
+                    <li>Flash-meddelanden för att ge återkoppling på åtgärder</li>
+                </ul>
+                <p>
+                    <strong>CRUD vs ORM:</strong> Jag implementerade CRUD med JSON-baserad lagring istället för en fullständig Doctrine ORM. Det var ett pragmatiskt val − JSON är enklare för detta lilla projekt men Doctrine ORM skulle ge mer robusthet och skalabilitet för större applikationer. Med ORM skulle jag ha haft:
+                </p>
+                <ul>
+                    <li>Automatisk schemamigration</li>
+                    <li>Query builder med type-safety</li>
+                    <li>Relationer mellan tabeller (många-till-många, etc.)</li>
+                    <li>Indexering och prestanda-optimeringar</li>
+                </ul>
+                <p>
+                    <strong>ORM-uppfattning:</strong> ORM är fantastiskt för att slippa skriva raw SQL och för att abstrahera bort databaskomplexitet. Men det lägger också ett abstrakt lager ovanpå databasen som kan göra debugging svårare. Jämfört med andra sätt som raw SQL eller query builders, ger ORM en mycket mer objektorienterad känsla − du jobbar med objekt istället för rader. Det gör koden mer läsbar men kan vara overkill för enklare projekt.
+                </p>
+                <p>
+                    <strong>API-endpoints:</strong> Jag exponerade också boksamlingen som JSON-API, vilket gör det enkelt för andra applikationer att konsumera data. Det är ett bra komplement till det vanliga webgränssnittet.
+                </p>
+                <p><strong>TIL:</strong> Jag avskyr fortfarande MVC för att det är så mycket att göra hela tiden − så många filer, så många lager, så många abstrakt konventioner att hålla reda på. Men nu börjar jag förstå varför: ju större och mer komplex en applikation blir, desto mer värde får man från denna strukturering. En liten bok-app känns överkomplicerad, men en större applikation med många utvecklare skulle förmodligen vara helt kaotisk utan denna ordning.</p>
             </div>
 
             <div class="report-section">
