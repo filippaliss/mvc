@@ -2,9 +2,7 @@ imports:
     - php
 
 filter:
-    excluded_paths: [vendor/*, tests/*, tools/*, node_modules/*, docs/*, public/build/*]
-    excluded_files:
-        - '*.phar'
+    excluded_paths: [vendor/*, tests/*, tools/*, node_modules/*, docs/*, public/build/*, '*.phar']
 
 build:
     image: default-bionic
