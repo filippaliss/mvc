@@ -33,4 +33,3 @@ checks:
         code_rating: true
         duplication: true
         security_vulnerabilities: true
-        specification: true
