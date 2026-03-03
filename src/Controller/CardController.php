@@ -58,7 +58,7 @@ class CardController extends AbstractController
         $deck->shuffleDeck();
         $session->set('cards', serialize($deck));
 
-        return $this->render('card_shuffleDeck.html.twig', [
+        return $this->render('card_shuffle_deck.html.twig', [
             'cards' => $deck->getAllCardsHTML(),
         ]);
     }
