@@ -94,7 +94,7 @@ class CardController extends AbstractController
             ? ['Inga kort kvar']
             : array_map(fn($card) => $card->toHTML(), $drawnCards);
 
-        return $this->render('card_drawNr.html.twig', [
+        return $this->render('card_draw_nr.html.twig', [
             'cards' => $cardsHTML,
         ]);
     }
