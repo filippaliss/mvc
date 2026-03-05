@@ -35,31 +35,31 @@
             <h3>1. Complexity (Komplexitet)</h3>
             <p>
                 Komplexitet handlar om hur svår koden är att förstå och underhålla. <strong>Cyklomatisk komplexitet</strong> 
-                mäter antalet oberoende vägar genom kod. En höga cyclick komplexitet betyder att koden är svårare att testa 
+                mäter antalet oberoende vägar genom kod. En hög cyklomatisk komplexitet betyder att koden är svårare att testa 
                 och underhålla.
             </p>
-            <p><strong>Vår kod:</strong> Genomsnittlig cyklomatisk komplexitet är 5.62 per klass, vilket är acceptabelt.</p>
+            <p><strong>Vår kod:</strong> Genomsnittlig cyklomatisk komplexitet är 5.21 per klass, vilket är acceptabelt.</p>
 
             <h3>2. Cohesion (Sammanhang)</h3>
             <p>
                 Sammanhang mäter hur väl metoderna i en klass hänger ihop. Högt sammanhang betyder att metoder jobbar 
                 tillsammans för samma syfte. Lågt sammanhang kan indikera att klassen gör för mycket (Single Responsibility Principle).
             </p>
-            <p><strong>Vår kod:</strong> Lack of cohesion of methods (LCOM) är 1.46, vilket är mycket bra (närmare 0 är bättre).</p>
+            <p><strong>Vår kod:</strong> Lack of cohesion of methods (LCOM) är 1.43, vilket är mycket bra (närmare 0 är bättre).</p>
 
             <h3>3. Coupling (Koppling)</h3>
             <p>
                 Koppling mäter beroenden mellan moduler. Låg koppling är önskvärt - det betyder att ändringar i en modul 
                 påverkar färre andra moduler. Högt efferent coupling (EC) betyder många outgoing dependencies.
             </p>
-            <p><strong>Vår kod:</strong> Genomsnittlig efferent coupling är 2.23 (bra), instabilitet 0.71 (moderat).</p>
+            <p><strong>Vår kod:</strong> Genomsnittlig efferent coupling är 2.29 (bra), instabilitet 0.73 (moderat).</p>
 
             <h3>4. Coverage (Kodtäckning)</h3>
             <p>
                 Kodtäckning mäter procenten av koden som är täckt av automatiserade tester. Högre täckning (>80%) 
                 ger större säkerhet att koden fungerar som förväntat.
             </p>
-            <p><strong>Vår kod:</strong> 69 tester passar, och cirka 46% av klasserna är täckta av tests. Dessa är 
+            <p><strong>Vår kod:</strong> 81 tester passar, och cirka 50% av klasserna är täckta av tests. Dessa är 
             enkla domain/game klasser som är väl testade.</p>
 
             <h3>5. Consistency (Konsistens)</h3>
@@ -92,12 +92,12 @@
 
         <h3>Nyckeltal från Phpmetrics:</h3>
         <ul>
-            <li><strong>Lines of Code (LOC):</strong> 1032 (branschstandard för projekt av denna storlek)</li>
-            <li><strong>Logical LOC:</strong> 636 (indikerar god kodtäthet)</li>
-            <li><strong>Antal klasser:</strong> 13 (väl strukturerat projekt)</li>
-            <li><strong>Metoder per klass:</strong> 4.62 (bra - håller klasserna fokuserade)</li>
-            <li><strong>Cyclomatic Complexity:</strong> 5.62 per klass (acceptabelt)</li>
-            <li><strong>Weighted Method Count:</strong> 9.23 (god balance)</li>
+            <li><strong>Lines of Code (LOC):</strong> 1047 (branschstandard för projekt av denna storlek)</li>
+            <li><strong>Logical LOC:</strong> 648 (indikerar god kodtäthet)</li>
+            <li><strong>Antal klasser:</strong> 14 (väl strukturerat projekt)</li>
+            <li><strong>Metoder per klass:</strong> 4.5 (bra - håller klasserna fokuserade)</li>
+            <li><strong>Cyclomatic Complexity:</strong> 5.21 per klass (acceptabelt)</li>
+            <li><strong>Weighted Method Count:</strong> 8.71 (god balans)</li>
             <li><strong>Violations:</strong> 2 stycken (se nedan)</li>
         </ul>
 
@@ -153,27 +153,27 @@
             <tbody>
                 <tr>
                     <td>Average Cyclomatic Complexity</td>
-                    <td>5.62</td>
+                    <td>5.21</td>
                     <td>✓ Acceptabelt</td>
                 </tr>
                 <tr>
                     <td>Lack of Cohesion (LCOM)</td>
-                    <td>1.46</td>
+                    <td>1.43</td>
                     <td>✓ Bra</td>
                 </tr>
                 <tr>
                     <td>Average Efferent Coupling</td>
-                    <td>2.23</td>
+                    <td>2.29</td>
                     <td>✓ Bra</td>
                 </tr>
                 <tr>
                     <td>Instability</td>
-                    <td>0.71</td>
+                    <td>0.73</td>
                     <td>⚠ Moderat</td>
                 </tr>
                 <tr>
                     <td>Test Coverage</td>
-                    <td>46% classes</td>
+                    <td>50% classes</td>
                     <td>⚠ Kan förbättras</td>
                 </tr>
                 <tr>
