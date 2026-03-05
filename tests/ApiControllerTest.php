@@ -12,14 +12,11 @@ use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 class ApiControllerTest extends TestCase
 {
-    private ApiController $controller;
     private Request $request;
     private Session $session;
 
     protected function setUp(): void
     {
-        $this->controller = new ApiController();
-        
         $this->session = new Session(new MockArraySessionStorage());
         $this->request = new Request();
         $this->request->setSession($this->session);
@@ -39,7 +36,7 @@ class ApiControllerTest extends TestCase
         $controller = new ApiController();
         $response = $controller->number();
         
-        $data = json_decode($response->getContent(), true);
+        $data = json_decode((string)$response->getContent(), true);
         
         $this->assertIsArray($data);
         $this->assertArrayHasKey('quote', $data);
@@ -62,7 +59,7 @@ class ApiControllerTest extends TestCase
         $controller = new ApiController();
         $response = $controller->deck($this->request);
         
-        $data = json_decode($response->getContent(), true);
+        $data = json_decode((string)$response->getContent(), true);
         
         $this->assertIsArray($data);
         $this->assertArrayHasKey('deck', $data);
@@ -90,7 +87,7 @@ class ApiControllerTest extends TestCase
         
         // Get original deck
         $response1 = $controller->deck($this->request);
-        $data1 = json_decode($response1->getContent(), true);
+        $data1 = json_decode((string)$response1->getContent(), true);
         $originalDeck = $data1['deck'];
         
         // Shuffle deck
@@ -98,7 +95,7 @@ class ApiControllerTest extends TestCase
         
         // Get shuffled deck
         $response2 = $controller->deck($this->request);
-        $data2 = json_decode($response2->getContent(), true);
+        $data2 = json_decode((string)$response2->getContent(), true);
         $shuffledDeck = $data2['deck'];
         
         $this->assertCount(52, $shuffledDeck);
@@ -117,7 +114,7 @@ class ApiControllerTest extends TestCase
         $response = $controller->deckDraw($this->request);
         
         $this->assertInstanceOf(JsonResponse::class, $response);
-        $data = json_decode($response->getContent(), true);
+        $data = json_decode((string)$response->getContent(), true);
         
         $this->assertIsArray($data);
         $this->assertArrayHasKey('deck', $data);
@@ -135,7 +132,7 @@ class ApiControllerTest extends TestCase
         $response = $controller->deckdrawNr($this->request, 5);
         
         $this->assertInstanceOf(JsonResponse::class, $response);
-        $data = json_decode($response->getContent(), true);
+        $data = json_decode((string)$response->getContent(), true);
         
         $this->assertIsArray($data);
         $this->assertArrayHasKey('deck', $data);
@@ -154,7 +151,7 @@ class ApiControllerTest extends TestCase
         
         // Check remaining cards
         $response = $controller->deck($this->request);
-        $data = json_decode($response->getContent(), true);
+        $data = json_decode((string)$response->getContent(), true);
         
         $this->assertCount(42, $data['deck']); // 52 - 10 = 42
     }
@@ -171,7 +168,7 @@ class ApiControllerTest extends TestCase
         
         // Check deck is empty
         $response = $controller->deck($this->request);
-        $data = json_decode($response->getContent(), true);
+        $data = json_decode((string)$response->getContent(), true);
         
         $this->assertCount(0, $data['deck']);
     }

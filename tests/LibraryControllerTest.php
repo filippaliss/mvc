@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 class LibraryControllerTest extends TestCase
 {
     private LibraryController $controller;
+    /** @var \ReflectionClass<\App\Controller\LibraryController> */
     private \ReflectionClass $reflection;
 
     protected function setUp(): void
