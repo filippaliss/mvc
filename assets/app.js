@@ -10,4 +10,4 @@ import './styles/app.css';
 
 import hello from './js/hello.js';
 
-console.log(hello())
+console.log(hello());
