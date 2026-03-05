@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2026-03-05 13:04:08        , with PHPMetrics v2.9.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2026-03-05 15:27:29        , with PHPMetrics v2.9.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -60,24 +60,24 @@
         <div class="bloc bloc-number">
             <div class="label">Test suites</div>
             <div class="number">
-                7            </div>
+                13            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">Assertions</div>
             <div class="number">
-                181            </div>
+                268            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(50 %)</small>
+                <small>(35.71 %)</small>
             </div>
             <div class="number">
-                7            </div>
+                5            </div>
         </div>
     </div>
 </div>
@@ -114,17 +114,6 @@
                                     </td>
                                                             </tr>
                                                         <tr>
-                                <td><span class="path">App\Controller\LuckyController</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
-                                        1                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.02);">
-                                        0.02                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
                                 <td><span class="path">App\Controller\CardController</span></td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.14);">
@@ -133,17 +122,6 @@
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.22);">
                                         0.23                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
-                                <td><span class="path">App\Controller\ApiController</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.14);">
-                                        4                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.28);">
-                                        0.29                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -214,6 +192,26 @@
                         </thead>
                         <tbody id="contentAreaJunitCalled" class="clusterize-content">
                                                     <tr>
+                                <td valign="top"><span class="path">App\Tests\ApiControllerTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Session\Session</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Request</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            4                                        </span>
+                                        <span class="path">App\Controller\ApiController</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
                                 <td valign="top"><span class="path">App\Tests\BankTest</span></td>
                                 <td style="padding-bottom: 1em;">
                                                                                                                     <span class="badge" title="Cyclomatic complexity of class">
@@ -225,6 +223,58 @@
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             1                                        </span>
                                         <span class="path">App\DeckClass\CardGraphic</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Tests\CardControllerTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Response</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\RedirectResponse</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">anonymous@0000000000000a750000000000000000</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Session\Session</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Request</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Tests\CardGameControllerTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Response</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">anonymous@00000000000009160000000000000000</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Session\Session</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Request</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">ReflectionClass</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -286,6 +336,45 @@
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             -                                        </span>
                                         <span class="path">ReflectionMethod</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Tests\LuckyControllerTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            1                                        </span>
+                                        <span class="path">App\Controller\LuckyController</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Tests\LuckyControllerTwigTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Response</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">anonymous@00000000000003380000000000000000</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Tests\MetricsControllerTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">Symfony\Component\HttpFoundation\Response</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">anonymous@00000000000007470000000000000000</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -546,7 +635,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Tests\\BankTest","time":0.041414},{"name":"App\\Tests\\CardGraphicTest","time":0.014126},{"name":"App\\Tests\\CardTest","time":0.024624},{"name":"App\\Tests\\DeckOfCardsTest","time":0.044504},{"name":"App\\Tests\\Game21Test","time":0.030956},{"name":"App\\Tests\\LibraryControllerTest","time":0.036999},{"name":"App\\Tests\\PlayerTest","time":0.039171}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Tests\\ApiControllerTest","time":0.128147},{"name":"App\\Tests\\BankTest","time":0.050266},{"name":"App\\Tests\\CardControllerTest","time":0.03827},{"name":"App\\Tests\\CardGameControllerTest","time":0.039003},{"name":"App\\Tests\\CardGraphicTest","time":0.023735},{"name":"App\\Tests\\CardTest","time":0.042907},{"name":"App\\Tests\\DeckOfCardsTest","time":0.081692},{"name":"App\\Tests\\Game21Test","time":0.04364},{"name":"App\\Tests\\LibraryControllerTest","time":0.052294},{"name":"App\\Tests\\LuckyControllerTest","time":0.020778},{"name":"App\\Tests\\LuckyControllerTwigTest","time":0.016383},{"name":"App\\Tests\\MetricsControllerTest","time":0.00445},{"name":"App\\Tests\\PlayerTest","time":0.05324}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {
