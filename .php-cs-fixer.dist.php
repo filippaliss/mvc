@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-use PhpCsFixer\Config;
-use PhpCsFixer\Finder;
+$configClass = 'PhpCsFixer\\Config';
+$finderClass = 'PhpCsFixer\\Finder';
 
-return (new Config())
+return (new $configClass())
     ->setRiskyAllowed(false)
     ->setRules([
         '@auto' => true
     ])
     // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
     ->setFinder(
-        (new Finder())
+        (new $finderClass())
             // 💡 root folder to check
             ->in(__DIR__)
             // 💡 additional files, eg bin entry file
