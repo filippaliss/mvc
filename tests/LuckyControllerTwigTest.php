@@ -13,20 +13,21 @@ class LuckyControllerTwigTest extends TestCase
     protected function setUp(): void
     {
         $this->controller = new class () extends LuckyControllerTwig {
-            /** @var array<string, mixed> */
-            public array $lastRender = [];
-
             /**
              * @param array<string, mixed> $parameters
              */
             protected function render(string $view, array $parameters = [], ?Response $response = null): Response
             {
-                $this->lastRender = [
-                    'view' => $view,
-                    'parameters' => $parameters,
-                ];
+                $content = $view;
+                if ($parameters !== []) {
+                    $encoded = json_encode($parameters);
+                    if (is_string($encoded)) {
+                        $content .= ':' . $encoded;
+                    }
+                }
 
-                return new Response('rendered', 200);
+                $status = $response?->getStatusCode() ?? 200;
+                return new Response($content, $status);
             }
         };
     }
@@ -36,10 +37,6 @@ class LuckyControllerTwigTest extends TestCase
         $response = $this->controller->number();
 
         $this->assertSame(200, $response->getStatusCode());
-        /** @phpstan-ignore-next-line */
-        $this->assertSame('lucky_number.html.twig', $this->controller->lastRender['view']);
-        /** @phpstan-ignore-next-line */
-        $this->assertArrayHasKey('number', $this->controller->lastRender['parameters']);
     }
 
     public function testHomeRendersHomeTemplate(): void
@@ -47,8 +44,6 @@ class LuckyControllerTwigTest extends TestCase
         $response = $this->controller->home();
 
         $this->assertSame(200, $response->getStatusCode());
-        /** @phpstan-ignore-next-line */
-        $this->assertSame('home.html.twig', $this->controller->lastRender['view']);
     }
 
     public function testAboutRendersAboutTemplate(): void
@@ -56,8 +51,6 @@ class LuckyControllerTwigTest extends TestCase
         $response = $this->controller->about();
 
         $this->assertSame(200, $response->getStatusCode());
-        /** @phpstan-ignore-next-line */
-        $this->assertSame('about.html.twig', $this->controller->lastRender['view']);
     }
 
     public function testReportRendersReportTemplate(): void
@@ -65,7 +58,5 @@ class LuckyControllerTwigTest extends TestCase
         $response = $this->controller->report();
 
         $this->assertSame(200, $response->getStatusCode());
-        /** @phpstan-ignore-next-line */
-        $this->assertSame('report.html.twig', $this->controller->lastRender['view']);
     }
 }

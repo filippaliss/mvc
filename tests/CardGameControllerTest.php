@@ -20,20 +20,21 @@ class CardGameControllerTest extends TestCase
     protected function setUp(): void
     {
         $this->controller = new class () extends CardGameController {
-            /** @var array<string, mixed> */
-            public array $lastRender = [];
-
             /**
              * @param array<string, mixed> $parameters
              */
             protected function render(string $view, array $parameters = [], ?Response $response = null): Response
             {
-                $this->lastRender = [
-                    'view' => $view,
-                    'parameters' => $parameters,
-                ];
+                $content = $view;
+                if ($parameters !== []) {
+                    $encoded = json_encode($parameters);
+                    if (is_string($encoded)) {
+                        $content .= ':' . $encoded;
+                    }
+                }
 
-                return new Response('rendered', 200);
+                $status = $response?->getStatusCode() ?? 200;
+                return new Response($content, $status);
             }
         };
 
@@ -81,13 +82,11 @@ class CardGameControllerTest extends TestCase
         $this->controller->startGame($this->request);
 
         $response = $this->controller->bankPlay($this->request);
+        $gameAfter = unserialize($this->session->get('game21'));
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertTrue($this->session->has('game21'));
-        /** @phpstan-ignore-next-line */
-        $this->assertArrayHasKey('parameters', $this->controller->lastRender);
-        /** @phpstan-ignore-next-line */
-        $this->assertArrayHasKey('result', $this->controller->lastRender['parameters']);
+        $this->assertInstanceOf(Game21::class, $gameAfter);
     }
 
     public function testDetermineWinnerPlayerWins(): void

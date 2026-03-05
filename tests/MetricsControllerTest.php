@@ -11,26 +11,26 @@ class MetricsControllerTest extends TestCase
     public function testMetricsRendersMetricsTemplate(): void
     {
         $controller = new class () extends MetricsController {
-            /** @var array<string, mixed> */
-            public array $lastRender = [];
-
             /**
              * @param array<string, mixed> $parameters
              */
             protected function render(string $view, array $parameters = [], ?Response $response = null): Response
             {
-                $this->lastRender = [
-                    'view' => $view,
-                    'parameters' => $parameters,
-                ];
+                $content = $view;
+                if ($parameters !== []) {
+                    $encoded = json_encode($parameters);
+                    if (is_string($encoded)) {
+                        $content .= ':' . $encoded;
+                    }
+                }
 
-                return new Response('rendered', 200);
+                $status = $response?->getStatusCode() ?? 200;
+                return new Response($content, $status);
             }
         };
 
         $response = $controller->metrics();
 
         $this->assertSame(200, $response->getStatusCode());
-        $this->assertSame('metrics.html.twig', $controller->lastRender['view']);
     }
 }

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
+/** @SuppressWarnings("PHPMD.TooManyPublicMethods") */
 class CardControllerTest extends TestCase
 {
     private CardController $controller;
@@ -20,20 +21,21 @@ class CardControllerTest extends TestCase
     protected function setUp(): void
     {
         $this->controller = new class () extends CardController {
-            /** @var array<string, mixed> */
-            public array $lastRender = [];
-
             /**
              * @param array<string, mixed> $parameters
              */
             protected function render(string $view, array $parameters = [], ?Response $response = null): Response
             {
-                $this->lastRender = [
-                    'view' => $view,
-                    'parameters' => $parameters,
-                ];
+                $content = $view;
+                if ($parameters !== []) {
+                    $encoded = json_encode($parameters);
+                    if (is_string($encoded)) {
+                        $content .= ':' . $encoded;
+                    }
+                }
 
-                return new Response('rendered', 200);
+                $status = $response?->getStatusCode() ?? 200;
+                return new Response($content, $status);
             }
 
             /**
@@ -41,11 +43,17 @@ class CardControllerTest extends TestCase
              */
             protected function redirectToRoute(string $route, array $parameters = [], int $status = 302): RedirectResponse
             {
-                return new RedirectResponse('/' . $route, $status);
+                $path = '/' . $route;
+                if ($parameters !== []) {
+                    $path .= '?' . http_build_query($parameters);
+                }
+
+                return new RedirectResponse($path, $status);
             }
 
             protected function addFlash(string $type, mixed $message): void
             {
+                [$type, $message] = [$type, $message];
             }
         };
 
