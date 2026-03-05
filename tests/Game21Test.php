@@ -81,8 +81,10 @@ class Game21Test extends TestCase
         $this->game->bankPlay();
 
         $bankValue = $bank->getHandValue();
-        // Bank should have value >= player value (or bust)
-        $this->assertGreaterThanOrEqual($player->getHandValue(), $bankValue);
+        $playerValue = $player->getHandValue();
+
+        // Bank should stop when it is no longer both below player and <= 21.
+        $this->assertFalse($bankValue < $playerValue && $bankValue <= 21);
     }
 
     public function testGameInitialization(): void

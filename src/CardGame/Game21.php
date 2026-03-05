@@ -101,8 +101,9 @@ class Game21
     {
         while ($this->bank->getHandValue() < $this->player->getHandValue()
                && $this->bank->getHandValue() <= 21) {
-            if ($this->deck->drawCard() !== null) {
-                $this->bank->addCard($this->deck->drawCard());
+            $card = $this->deck->drawCard();
+            if ($card !== null) {
+                $this->bank->addCard($card);
             }
         }
     }
