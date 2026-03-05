@@ -216,6 +216,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardGameController.html#method_bankPlay"
         },                {
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgetGameFromSession\u0028\u0029",
+            "name": "getGameFromSession",
+            "summary": "",
+            "url": "classes/App-Controller-CardGameController.html#method_getGameFromSession"
+        },                {
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AdetermineWinner\u0028\u0029",
+            "name": "determineWinner",
+            "summary": "",
+            "url": "classes/App-Controller-CardGameController.html#method_determineWinner"
+        },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",
             "summary": "",
@@ -321,10 +331,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LuckyController.html#method_number"
         },                {
-            "fqsen": "\\App\\Controller\\LuckyController\u003A\u003Ahi\u0028\u0029",
-            "name": "hi",
+            "fqsen": "\\App\\Controller\\LuckyController\u003A\u003Agreet\u0028\u0029",
+            "name": "greet",
             "summary": "",
-            "url": "classes/App-Controller-LuckyController.html#method_hi"
+            "url": "classes/App-Controller-LuckyController.html#method_greet"
         },                {
             "fqsen": "\\App\\Controller\\LuckyControllerTwig",
             "name": "LuckyControllerTwig",
@@ -350,6 +360,16 @@ Search.appendIndex(
             "name": "report",
             "summary": "",
             "url": "classes/App-Controller-LuckyControllerTwig.html#method_report"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method_metrics"
         },                {
             "fqsen": "\\App\\DeckClass\\Card",
             "name": "Card",

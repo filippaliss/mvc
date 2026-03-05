@@ -31,7 +31,7 @@ class CardController extends AbstractController
 
     // Visa startsidan för kort
     #[Route('/card', name: "cards")]
-    public function cards(Request $request): Response
+    public function cards(): Response
     {
         return $this->render('card.html.twig');
     }
@@ -107,14 +107,13 @@ class CardController extends AbstractController
     {
         $session = $request->getSession();
 
-        if ($session->has('cards')) {
-            $deck = unserialize($session->get('cards'));
-        } else {
+        if (!$session->has('cards')) {
             $deck = new DeckOfCards();
             $deck->shuffleDeck();
             $session->set('cards', serialize($deck));
+            return $deck;
         }
 
-        return $deck;
+        return unserialize($session->get('cards'));
     }
 }

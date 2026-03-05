@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Test Documentation</title>
+        <style>
+            body {
+                text-rendering: optimizeLegibility;
+                font-family: Source SansSerif Pro, Arial, sans-serif;
+                font-variant-ligatures: common-ligatures;
+                font-kerning: normal;
+                margin-left: 2rem;
+                background-color: #fff;
+                color: #000;
+            }
+
+            body > ul > li {
+                font-size: larger;
+            }
+
+            h2 {
+                font-size: larger;
+                text-decoration-line: underline;
+                text-decoration-thickness: 2px;
+                margin: 0;
+                padding: 0.5rem 0;
+            }
+
+            ul {
+                list-style: none;
+                margin: 0 0 2rem;
+                padding: 0 0 0 1rem;
+                text-indent: -1rem;
+            }
+
+            .success:before {
+                color: #4e9a06;
+                content: '✓';
+                padding-right: 0.5rem;
+            }
+
+            .defect {
+                color: #a40000;
+            }
+
+            .defect:before {
+                color: #a40000;
+                content: '✗';
+                padding-right: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Bank (App\Tests\Bank)</h2>
+        <ul>
+            <li class="success">Bank constructor</li>
+            <li class="success">Bank starts with empty hand</li>
+            <li class="success">Add card</li>
+            <li class="success">Add multiple cards</li>
+            <li class="success">Get hand value</li>
+            <li class="success">Get hand value with face cards</li>
+            <li class="success">Get hand value with ace</li>
+            <li class="success">Get hand value with multiple aces</li>
+            <li class="success">Get hand value with ace adjustment</li>
+            <li class="success">Get hand value blackjack</li>
+            <li class="success">Reset hand</li>
+            <li class="success">Get hand value with numeric cards</li>
+            <li class="success">Get hand value bust</li>
+        </ul>
+        <h2>Card (App\Tests\Card)</h2>
+        <ul>
+            <li class="success">Card constructor</li>
+            <li class="success">Get symbol</li>
+            <li class="success">Get suit</li>
+            <li class="success">Card with different symbols</li>
+            <li class="success">Get character for hearts</li>
+            <li class="success">Get character for diamonds</li>
+            <li class="success">Get character for clubs</li>
+            <li class="success">Get character for spades</li>
+            <li class="success">All number symbols</li>
+            <li class="success">All suits</li>
+        </ul>
+        <h2>Card Graphic (App\Tests\CardGraphic)</h2>
+        <ul>
+            <li class="success">Card graphic inherits from card</li>
+            <li class="success">To h t m l for hearts</li>
+            <li class="success">To h t m l for diamonds</li>
+            <li class="success">To h t m l for clubs</li>
+            <li class="success">To h t m l for spades</li>
+            <li class="success">To h t m l contains span tag</li>
+            <li class="success">All suits color mapping</li>
+        </ul>
+        <h2>Deck Of Cards (App\Tests\DeckOfCards)</h2>
+        <ul>
+            <li class="success">Deck constructor</li>
+            <li class="success">Initial deck has 52 cards</li>
+            <li class="success">Deck has correct number of suits</li>
+            <li class="success">Deck has correct number of symbols</li>
+            <li class="success">Draw card reduces deck size</li>
+            <li class="success">Draw card adds to drawn cards</li>
+            <li class="success">Draw multiple cards</li>
+            <li class="success">Draw cards returns card instances</li>
+            <li class="success">Shuffle deck</li>
+            <li class="success">Draw cards adds to drawn cards</li>
+            <li class="success">Draw card when deck empty</li>
+            <li class="success">Get all cards h t m l</li>
+            <li class="success">Get drawn cards h t m l</li>
+            <li class="success">Get drawn cards h t m l when none drawn</li>
+            <li class="success">Draw cards with more than available</li>
+            <li class="success">Symbols and suits are correct</li>
+        </ul>
+        <h2>Game21 (App\Tests\Game21)</h2>
+        <ul>
+            <li class="success">Game 21 constructor</li>
+            <li class="success">Get deck</li>
+            <li class="success">Game start</li>
+            <li class="success">Game start resets hands</li>
+            <li class="success">Player hit</li>
+            <li class="success">Bank play</li>
+            <li class="success">Bank play stops at 21 or higher</li>
+            <li class="success">Game initialization</li>
+            <li class="success">Multiple game rounds</li>
+            <li class="success">Deck shuffled on game start</li>
+        </ul>
+        <h2>Player (App\Tests\Player)</h2>
+        <ul>
+            <li class="success">Player constructor</li>
+            <li class="success">Player starts with empty hand</li>
+            <li class="success">Add card</li>
+            <li class="success">Add multiple cards</li>
+            <li class="success">Get hand value</li>
+            <li class="success">Get hand value with face cards</li>
+            <li class="success">Get hand value with ace</li>
+            <li class="success">Get hand value with multiple aces</li>
+            <li class="success">Get hand value with ace adjustment</li>
+            <li class="success">Get hand value blackjack</li>
+            <li class="success">Reset hand</li>
+            <li class="success">Get hand value with numeric cards</li>
+            <li class="success">Get hand value bust</li>
+        </ul>
+    </body>
+</html>

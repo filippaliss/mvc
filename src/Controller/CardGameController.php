@@ -36,22 +36,15 @@ class CardGameController extends AbstractController
     public function playerHit(Request $request): Response
     {
         $session = $request->getSession();
+        $game = $this->getGameFromSession($session);
 
-        // Säkerställ att sessionen innehåller ett spel, annars skapa nytt
-        if ($session->has('game21')) {
-            $game = unserialize($session->get('game21'));
-        } else {
-            $game = new game21();
-            $game->start();
-        }
-
-        // Dra ett kort till spelaren
+        // Draw a card for the player
         $game->playerHit();
 
-        // Spara spelet igen (serialiserat)
+        // Save the game again (serialized)
         $session->set('game21', serialize($game));
 
-        // Visa uppdaterade kort
+        // Show updated cards
         $playerCards = $game->getPlayer()->getHand();
         $cardsHTML = array_map(fn($card) => $card->toHTML(), $playerCards);
 
@@ -65,34 +58,22 @@ class CardGameController extends AbstractController
     public function bankPlay(Request $request): Response
     {
         $session = $request->getSession();
+        $game = $this->getGameFromSession($session);
 
-        // Säkerställ att sessionen innehåller ett spel
-        if ($session->has('game21')) {
-            $game = unserialize($session->get('game21'));
-        } else {
-            $game = new game21();
-            $game->start();
-        }
-
-        // Bankens tur
+        // Bank's turn
         $game->bankPlay();
 
-        // Spara spelet igen (serialiserat)
+        // Save the game again (serialized)
         $session->set('game21', serialize($game));
 
-        // Visa bankens kort
+        // Show bank's cards
         $bankCards = $game->getBank()->getHand();
         $cardsHTML = array_map(fn($card) => $card->toHTML(), $bankCards);
 
-        // Räkna ut vinnare
+        // Calculate winner
         $playerValue = $game->getPlayer()->getHandValue();
         $bankValue = $game->getBank()->getHandValue();
-        $result = 'Oavgjort';
-        if ($bankValue > 21 || $playerValue > $bankValue) {
-            $result = 'Spelaren vinner!';
-        } elseif ($bankValue >= $playerValue) {
-            $result = 'Banken vinner!';
-        }
+        $result = $this->determineWinner($bankValue, $playerValue);
 
         return $this->render('bank_play.html.twig', [
             'cards' => $cardsHTML,
@@ -100,5 +81,30 @@ class CardGameController extends AbstractController
             'playerValue' => $playerValue,
             'result' => $result,
         ]);
+    }
+
+    private function getGameFromSession(\Symfony\Component\HttpFoundation\Session\SessionInterface $session): \App\CardGame\Game21
+    {
+        if ($session->has('game21')) {
+            return unserialize($session->get('game21'));
+        }
+
+        $game = new game21();
+        $game->start();
+
+        return $game;
+    }
+
+    private function determineWinner(int $bankValue, int $playerValue): string
+    {
+        if ($bankValue > 21 || $playerValue > $bankValue) {
+            return 'Spelaren vinner!';
+        }
+
+        if ($playerValue === $bankValue) {
+            return 'Oavgjort';
+        }
+
+        return 'Banken vinner!';
     }
 }

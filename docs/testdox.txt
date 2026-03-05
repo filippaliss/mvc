@@ -1,0 +1,81 @@
+Bank (App\Tests\Bank)
+ [x] Bank constructor
+ [x] Bank starts with empty hand
+ [x] Add card
+ [x] Add multiple cards
+ [x] Get hand value
+ [x] Get hand value with face cards
+ [x] Get hand value with ace
+ [x] Get hand value with multiple aces
+ [x] Get hand value with ace adjustment
+ [x] Get hand value blackjack
+ [x] Reset hand
+ [x] Get hand value with numeric cards
+ [x] Get hand value bust
+
+Card (App\Tests\Card)
+ [x] Card constructor
+ [x] Get symbol
+ [x] Get suit
+ [x] Card with different symbols
+ [x] Get character for hearts
+ [x] Get character for diamonds
+ [x] Get character for clubs
+ [x] Get character for spades
+ [x] All number symbols
+ [x] All suits
+
+Card Graphic (App\Tests\CardGraphic)
+ [x] Card graphic inherits from card
+ [x] To h t m l for hearts
+ [x] To h t m l for diamonds
+ [x] To h t m l for clubs
+ [x] To h t m l for spades
+ [x] To h t m l contains span tag
+ [x] All suits color mapping
+
+Deck Of Cards (App\Tests\DeckOfCards)
+ [x] Deck constructor
+ [x] Initial deck has 52 cards
+ [x] Deck has correct number of suits
+ [x] Deck has correct number of symbols
+ [x] Draw card reduces deck size
+ [x] Draw card adds to drawn cards
+ [x] Draw multiple cards
+ [x] Draw cards returns card instances
+ [x] Shuffle deck
+ [x] Draw cards adds to drawn cards
+ [x] Draw card when deck empty
+ [x] Get all cards h t m l
+ [x] Get drawn cards h t m l
+ [x] Get drawn cards h t m l when none drawn
+ [x] Draw cards with more than available
+ [x] Symbols and suits are correct
+
+Game21 (App\Tests\Game21)
+ [x] Game 21 constructor
+ [x] Get deck
+ [x] Game start
+ [x] Game start resets hands
+ [x] Player hit
+ [x] Bank play
+ [x] Bank play stops at 21 or higher
+ [x] Game initialization
+ [x] Multiple game rounds
+ [x] Deck shuffled on game start
+
+Player (App\Tests\Player)
+ [x] Player constructor
+ [x] Player starts with empty hand
+ [x] Add card
+ [x] Add multiple cards
+ [x] Get hand value
+ [x] Get hand value with face cards
+ [x] Get hand value with ace
+ [x] Get hand value with multiple aces
+ [x] Get hand value with ace adjustment
+ [x] Get hand value blackjack
+ [x] Reset hand
+ [x] Get hand value with numeric cards
+ [x] Get hand value bust
+

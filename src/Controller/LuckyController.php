@@ -18,7 +18,7 @@ class LuckyController
     }
 
     #[Route("/lucky/hi")]
-    public function hi(): Response
+    public function greet(): Response
     {
         return new Response(
             '<html><body>Hi to you!</body></html>'

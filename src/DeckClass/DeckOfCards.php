@@ -99,14 +99,14 @@ class DeckOfCards
      * Removes and returns the specified number of cards from the deck.
      * All drawn cards are added to the cardsDrawn array.
      *
-     * @param int $nr The number of cards to draw
+     * @param int $numCards The number of cards to draw
      * @return CardGraphic[] Array of drawn cards
      */
-    public function drawCards(int $nr): array
+    public function drawCards(int $numCards): array
     {
         $drawn = [];
 
-        for ($i = 0; $i < $nr; $i++) {
+        for ($i = 0; $i < $numCards; $i++) {
             $card = array_pop($this->cards);
             if ($card instanceof CardGraphic) {
                 $this->cardsDrawn[] = $card;
