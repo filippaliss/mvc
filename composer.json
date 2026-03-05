@@ -55,7 +55,7 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
-        "phpunit": "vendor/bin/phpunit --coverage-clover=docs/coverage.clover",
+        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover=docs/coverage.clover",
         "phpmd": "tools/phpmd/vendor/bin/phpmd . text tools/phpmd/phpmd.xml || true",
         "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -c tools/phpstan/phpstan.neon || true",
         "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
