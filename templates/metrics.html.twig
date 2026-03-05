@@ -28,8 +28,8 @@
         
         <div class="intro-content">
             <p>
-                God kodkvalitet kan mätas genom sex grundläggande dimensioner. Dessa hjälper oss att förstå och 
-                förbättra hur väl vår kod är strukturerad, testbar och underhållbar.
+                God kodkvalitet kan mätas genom sex grundläggande dimensioner. Dessa hjälper mig att förstå och 
+                förbättra hur väl min kod är strukturerad, testbar och underhållbar.
             </p>
 
             <h3>1. Complexity (Komplexitet)</h3>
@@ -38,28 +38,28 @@
                 mäter antalet oberoende vägar genom kod. En hög cyklomatisk komplexitet betyder att koden är svårare att testa 
                 och underhålla.
             </p>
-            <p><strong>Vår kod:</strong> Genomsnittlig cyklomatisk komplexitet är 5.21 per klass, vilket är acceptabelt.</p>
+            <p><strong>Min kod:</strong> Genomsnittlig cyklomatisk komplexitet är 5.21 per klass, vilket är acceptabelt.</p>
 
             <h3>2. Cohesion (Sammanhang)</h3>
             <p>
                 Sammanhang mäter hur väl metoderna i en klass hänger ihop. Högt sammanhang betyder att metoder jobbar 
                 tillsammans för samma syfte. Lågt sammanhang kan indikera att klassen gör för mycket (Single Responsibility Principle).
             </p>
-            <p><strong>Vår kod:</strong> Lack of cohesion of methods (LCOM) är 1.43, vilket är mycket bra (närmare 0 är bättre).</p>
+            <p><strong>Min kod:</strong> Lack of cohesion of methods (LCOM) är 1.43, vilket är mycket bra (närmare 0 är bättre).</p>
 
             <h3>3. Coupling (Koppling)</h3>
             <p>
                 Koppling mäter beroenden mellan moduler. Låg koppling är önskvärt - det betyder att ändringar i en modul 
                 påverkar färre andra moduler. Högt efferent coupling (EC) betyder många outgoing dependencies.
             </p>
-            <p><strong>Vår kod:</strong> Genomsnittlig efferent coupling är 2.29 (bra), instabilitet 0.73 (moderat).</p>
+            <p><strong>Min kod:</strong> Genomsnittlig efferent coupling är 2.29 (bra), instabilitet 0.73 (moderat).</p>
 
             <h3>4. Coverage (Kodtäckning)</h3>
             <p>
                 Kodtäckning mäter procenten av koden som är täckt av automatiserade tester. Högre täckning (>80%) 
                 ger större säkerhet att koden fungerar som förväntat.
             </p>
-            <p><strong>Vår kod:</strong> 81 tester passar, och cirka 50% av klasserna är täckta av tests. Dessa är 
+            <p><strong>Min kod:</strong> 81 tester passar, och cirka 50% av klasserna är täckta av tests. Dessa är 
             enkla domain/game klasser som är väl testade.</p>
 
             <h3>5. Consistency (Konsistens)</h3>
@@ -67,14 +67,14 @@
                 Konsistens handlar om att följa kodstandarder - namngivning, formatering, struktur. Konsistent kod 
                 är lättare att läsa och förstå för alla utvecklare.
             </p>
-            <p><strong>Vår kod:</strong> PHP CS Fixer fixade 0 filer - koden följer redan kodstandarden!</p>
+            <p><strong>Min kod:</strong> PHP CS Fixer fixade 0 filer - koden följer redan kodstandarden!</p>
 
             <h3>6. Cleanability (Renhet/Underhållbarhet)</h3>
             <p>
                 Renhet handlar om hur enkelt det är att underhålla och förbättra koden. Rena namn, små funktioner, 
                 och god dokumentation bidrar till högre renhet.
             </p>
-            <p><strong>Vår kod:</strong> Vi har några områden för förbättring (se Phpmetrics-analys nedan).</p>
+            <p><strong>Min kod:</strong> Jag har några områden för förbättring (se Phpmetrics-analys nedan).</p>
         </div>
     </section>
 
@@ -83,7 +83,7 @@
         <h2>Phpmetrics - Analys av Kodkvalitet</h2>
         
         <p>
-            Phpmetrics analyserar vår kod och ger oss detaljerade mätvärden om storlek, komplexitet och design.
+            Phpmetrics analyserar min kod och ger mig detaljerade mätvärden om storlek, komplexitet och design.
         </p>
 
         <div class="metrics-visualization">
@@ -214,12 +214,12 @@
 
             <h4>PHPMD Pattern Matches:</h4>
             <ul>
-                <li>3 x ElseExpression violations - kan elimineras ✓ (vi fixar detta)</li>
-                <li>1 x UnusedFormalParameter - remove unused $request ✓ (vi fixar detta)</li>
+                <li>3 x ElseExpression violations - kan elimineras ✓ (jag fixar detta)</li>
+                <li>1 x UnusedFormalParameter - remove unused $request ✓ (jag fixar detta)</li>
                 <li>3 x TooManyPublicMethods - refaktorera test- och controllerklass (pågår)</li>
-                <li>1 x ShortMethodName - 'hi' method i LuckyController (vi fixar detta)</li>
-                <li>1 x ShortVariableName - '$nr' i DeckOfCards (vi fixar detta)</li>
-                <li>1 x MissingImport - felanvändning av klasser (vi fixar detta)</li>
+                <li>1 x ShortMethodName - 'hi' method i LuckyController (jag fixar detta)</li>
+                <li>1 x ShortVariableName - '$nr' i DeckOfCards (jag fixar detta)</li>
+                <li>1 x MissingImport - felanvändning av klasser (jag fixar detta)</li>
             </ul>
         </div>
 
@@ -308,9 +308,10 @@
             </p>
             <p>
                 <strong>Förväntad påverkan:</strong>
+                <ul>
                     <li>Code Coverage: 30% → 60%+</li>
                     <li>Scrutinizer Quality: Högre genom bättre coverage metrics</li>
-                    <li>Confidence: Vi vet att koden fungerar som förväntat</li>
+                    <li>Confidence: Jag vet att koden fungerar som förväntat</li>
                     <li>Six Cs - Coverage: Direkt förbättring</li>
                 </ul>
             </p>
@@ -533,7 +534,7 @@
         
         <h3>Kan man aktivt arbeta med kodkvalitet och "clean code" på detta sättet?</h3>
         <p>
-            <strong>Ja, absolut!</strong> Den data-driven metoden som vi använder här är mycket kraftfull. Genom att:
+            <strong>Ja, absolut!</strong> Den data-driven metoden som jag använder här är mycket kraftfull. Genom att:
         </p>
         <ul>
             <li>Mäta objektivt (metrics, coverage, complexity)</li>
@@ -542,14 +543,14 @@
             <li>Implementera och verifiera resultat</li>
         </ul>
         <p>
-            ...får vi en iterativ process för kontinuerlig förbättring. Istället för att förlita oss på subjektivt 
-            kodreview har vi konkreta mätvärden att arbeta med.
+            ...får jag en iterativ process för kontinuerlig förbättring. Istället för att förlita mig på subjektivt 
+            kodreview har jag konkreta mätvärden att arbeta med.
         </p>
 
         <h3>Fördelar med denna approach:</h3>
         <ul>
-            <li><strong>Objektivitet:</strong> Vi mäter faktisk kod, inte gissningar</li>
-            <li><strong>Prioritering:</strong> Vi fokuserar på de viktigaste förbättringarna först</li>
+            <li><strong>Objektivitet:</strong> Jag mäter faktisk kod, inte gissningar</li>
+            <li><strong>Prioritering:</strong> Jag fokuserar på de viktigaste förbättringarna först</li>
             <li><strong>Dokumentation:</strong> Före/efter-jämförelser visar resultat tydligt</li>
             <li><strong>Automatisering:</strong> CI/CD-verktyg kan automatisera dessa kontroller</li>
             <li><strong>Kontinuitet:</strong> Processen kan upprepas regelbundet</li>
@@ -579,12 +580,12 @@
 
         <h3>Slutsats:</h3>
         <p>
-            Den data-driven approach vi använder här, kombinerat med andra praktiker som kodreview och 
+            Den data-driven approach jag använder här, kombinerat med andra praktiker som kodreview och 
             pair programming, skapar en kraftfull kultur för kodkvalitet. Metrics är inte målet i sig - 
             de är ett medel för att bygga underhållbar, säker och effektiv kod.
         </p>
         <p>
-            För denna projekt rekommenderas att implementera de identifierade förbättringarna och sedan 
+            För mitt projekt rekommenderas att implementera de identifierade förbättringarna och sedan 
             köra om denna analys för att dokumentera framsteg.
         </p>
     </section>
