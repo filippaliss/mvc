@@ -221,3 +221,137 @@
     word-break: break-word;
     overflow-wrap: anywhere;
 }
+
+/* ===== METRICS PAGE ===== */
+.metrics-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.metrics-section {
+    margin: 40px 0;
+    padding: 20px;
+    background: var(--beige-light2);
+    border-radius: var(--border-radius-md);
+    border-left: 5px solid var(--brown-medium);
+}
+
+.badges-section {
+    text-align: center;
+    padding: 30px;
+    background: var(--white);
+    border-radius: var(--border-radius-md);
+    margin-bottom: 30px;
+}
+
+.badges {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.badges a {
+    display: inline-block;
+    transition: transform var(--transition-normal);
+}
+
+.badges a:hover {
+    transform: scale(1.05);
+}
+
+.badges img {
+    height: 30px;
+}
+
+.intro-content h3 {
+    color: var(--brown-dark);
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 2px solid var(--beige-light);
+}
+
+.finding,
+.improvement-plan {
+    background: var(--white);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: var(--border-radius-sm);
+    border-left: 5px solid var(--brown-light);
+}
+
+.finding h4,
+.improvement-plan h3 {
+    color: var(--brown-dark);
+    margin-top: 0;
+}
+
+.metrics-table,
+.improvements-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--white);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.metrics-table th,
+.improvements-table th {
+    background: var(--brown-medium);
+    color: var(--white);
+    padding: 12px;
+    text-align: left;
+}
+
+.metrics-table td,
+.improvements-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--beige-light);
+}
+
+.metrics-table tr:hover,
+.improvements-table tr:hover {
+    background: var(--beige-light2);
+}
+
+.scrutinizer-findings {
+    background: var(--white);
+    padding: 20px;
+    border-radius: var(--border-radius-sm);
+}
+
+.scrutinizer-findings h4 {
+    color: var(--brown-dark);
+    margin-top: 15px;
+}
+
+.metrics-visualization {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.metrics-dashboard-image {
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid var(--beige-dark);
+    margin: 20px 0;
+}
+
+.metrics-page ul {
+    line-height: 1.8;
+}
+
+.metrics-page li {
+    margin: 8px 0;
+}
+
+.metrics-page strong {
+    color: var(--brown-dark);
+}
+
+.metrics-page em {
+    color: var(--brown-medium);
+}

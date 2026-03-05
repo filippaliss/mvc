@@ -59,7 +59,7 @@
                 Kodtäckning mäter procenten av koden som är täckt av automatiserade tester. Högre täckning (>80%) 
                 ger större säkerhet att koden fungerar som förväntat.
             </p>
-            <p><strong>Min kod:</strong> 81 tester passar, och cirka 50% av klasserna är täckta av tests. Dessa är 
+            <p><strong>Min kod:</strong> 115 tester passar, och 76.92% av klasserna är täckta av tests (10/13 enligt lokal phpunit-coverage). Dessa är 
             enkla domain/game klasser som är väl testade.</p>
 
             <h3>5. Consistency (Konsistens)</h3>
@@ -87,7 +87,7 @@
         </p>
 
         <div class="metrics-visualization">
-            <img src="{{ asset('img/metrics_dashboard.png') }}" alt="Phpmetrics Dashboard" style="width: 100%; max-width: 800px; border: 1px solid #ccc; margin: 20px 0;">
+            <img src="{{ asset('img/metrics_dashboard.png') }}" alt="Phpmetrics Dashboard" class="metrics-dashboard-image">
         </div>
 
         <h3>Nyckeltal från Phpmetrics:</h3>
@@ -206,20 +206,15 @@
             <h4>✓ Code Intelligence: Available</h4>
             <p>Koden är väl dokumenterad och strukturerad för intelligentanalys.</p>
 
-            <h4>⚠ Code Coverage: 30% (KAN FÖRBÄTTRAS)</h4>
+            <h4>✅ Code Coverage: 26% → 68.51% (MÅL UPPNÅTT)</h4>
             <p>
-                Kodtäckningen är låg. För närvarande är endast 30% av koden täckt av tests. 
-                Detta är den största förbättringspotentialen. Målsättning: minst 60%+.
+                Kodtäckningen var låg i utgångsläget (26%). Senaste lokala mätning visar 68.51% line coverage 
+                (309/451 rader), vilket passerar målet på minst 60%.
             </p>
 
             <h4>PHPMD Pattern Matches:</h4>
             <ul>
-                <li>3 x ElseExpression violations - kan elimineras ✓ (jag fixar detta)</li>
-                <li>1 x UnusedFormalParameter - remove unused $request ✓ (jag fixar detta)</li>
-                <li>3 x TooManyPublicMethods - refaktorera test- och controllerklass (pågår)</li>
-                <li>1 x ShortMethodName - 'hi' method i LuckyController (jag fixar detta)</li>
-                <li>1 x ShortVariableName - '$nr' i DeckOfCards (jag fixar detta)</li>
-                <li>1 x MissingImport - felanvändning av klasser (jag fixar detta)</li>
+                <li>4 x TooManyPublicMethods (1 controllerklass + 3 testklasser)</li>
             </ul>
         </div>
 
@@ -245,8 +240,8 @@
                 </tr>
                 <tr>
                     <td>Code Coverage</td>
-                    <td>30%</td>
-                    <td>⚠ Lågt - målet är 60%+</td>
+                    <td>26% → 68.51% (lokal mätning)</td>
+                    <td>✅ Mål uppnått (över 60%)</td>
                 </tr>
                 <tr>
                     <td>Code Intelligence</td>
@@ -297,22 +292,22 @@
         </div>
 
         <div class="improvement-plan">
-            <h3>🎯 Förbättring 2: Öka Code Coverage från 26% till 60%+ (PRIORITY)</h3>
+            <h3>🎯 Förbättring 2: Öka Code Coverage från 26% till 60%+ (PRIORITY) ✅</h3>
             <p>
-                <strong>Vad:</strong> Skriva ytterligare unit tests för LibraryController och CardGameController 
-                som saknar testning. Fokus på kritiska business logic.
+                <strong>Vad:</strong> Skriva ytterligare unit tests för CardController, CardGameController, MetricsController 
+                och LuckyControllerTwig för att täcka tidigare otestade controllers.
             </p>
             <p>
-                <strong>Varför:</strong> 30% coverage är lågt. Detta är den största risken för regressioner. 
-                Scrutinizer and CI systems prioriterar hög coverage för quality assurance.
+                <strong>Varför:</strong> 26% coverage var lågt och gav hög regressionsrisk. 
+                Högre coverage stärker quality assurance i CI.
             </p>
             <p>
-                <strong>Förväntad påverkan:</strong>
+                <strong>Resultat:</strong>
                 <ul>
-                    <li>Code Coverage: 30% → 60%+</li>
-                    <li>Scrutinizer Quality: Högre genom bättre coverage metrics</li>
-                    <li>Confidence: Jag vet att koden fungerar som förväntat</li>
-                    <li>Six Cs - Coverage: Direkt förbättring</li>
+                    <li>Code Coverage: 26% → 68.51%</li>
+                    <li>Classes covered: 76.92% (10/13)</li>
+                    <li>Confidence: Högre tillit till att routes och flöden fungerar</li>
+                    <li>Six Cs - Coverage: Tydlig förbättring uppnådd</li>
                 </ul>
             </p>
         </div>
@@ -375,7 +370,7 @@
                     <td>~30 min</td>
                 </tr>
                 <tr>
-                    <td>Öka Code Coverage (30% → 60%)</td>
+                    <td>Öka Code Coverage (26% → 60%)</td>
                     <td>🔴 KRITISK</td>
                     <td>Scrutinizer score, Reliability</td>
                     <td>~2 timmar</td>
@@ -489,20 +484,20 @@
                     <tr>
                         <td>Classes called by tests</td>
                         <td>42.86% (6 klasser)</td>
-                        <td>50% (7 klasser)</td>
-                        <td>🟢 +7 test-fall, inkl LibraryController</td>
+                        <td>76.92% (10/13 klasser)</td>
+                        <td>🟢 +4 klasser täckta</td>
                     </tr>
                     <tr>
                         <td>Number of unit tests</td>
                         <td>69</td>
-                        <td>81</td>
-                        <td>🟢 +12 nya tester för private methods</td>
+                        <td>115</td>
+                        <td>🟢 +46 tester totalt</td>
                     </tr>
                     <tr>
                         <td>Total assertions</td>
                         <td>167</td>
-                        <td>181</td>
-                        <td>🟢 +14 assertions</td>
+                        <td>268</td>
+                        <td>🟢 +101 assertions</td>
                     </tr>
                     <tr>
                         <td>Halstead bugs risk (LibraryController)</td>
@@ -515,7 +510,7 @@
 
             <h4>Nästa Steg (Framtida Förbättringar):</h4>
             <ul>
-                <li>📈 Öka Code Coverage från 30% till 60%+ (skriva fler tester)</li>
+                <li>✅ Coverage-målet 60%+ uppnått (nu 68.51%)</li>
                 <li>🔄 Refaktorera LibraryController - dela upp i service classes</li>
                 <li>🏗️ Adressera Stable Abstractions Principle i DeckClass paketet</li>
             </ul>
@@ -523,8 +518,8 @@
 
         <p style="padding: 10px; background: #e8f5e9; border-left: 4px solid #4caf50;">
             <strong>✓ Implementering avslutad:</strong> Alla identifierade PHPMD violations (utom test-klasserna) har fixats. 
-            Test coverage för LibraryController ökat från 0 till 12+. Komplexitet och buggrisk har reducerats. 
-            81/81 tester passande med 181 assertions.
+            Coverage-målet är uppnått: 26% → 68.51% (lokal mätning). 
+            115/115 tester passande med 268 assertions.
         </p>
     </section>
 
@@ -591,132 +586,4 @@
     </section>
 
 </div>
-
-<style>
-    .metrics-page {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .metrics-section {
-        margin: 40px 0;
-        padding: 20px;
-        background: #f5f5f5;
-        border-radius: 8px;
-        border-left: 5px solid #0066cc;
-    }
-
-    .badges-section {
-        text-align: center;
-        padding: 30px;
-        background: #fff;
-        border-radius: 8px;
-        margin-bottom: 30px;
-    }
-
-    .badges {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 20px;
-    }
-
-    .badges a {
-        display: inline-block;
-        transition: transform 0.3s ease;
-    }
-
-    .badges a:hover {
-        transform: scale(1.05);
-    }
-
-    .badges img {
-        height: 30px;
-    }
-
-    .intro-content h3 {
-        color: #333;
-        margin-top: 20px;
-        padding-top: 10px;
-        border-top: 2px solid #ddd;
-    }
-
-    .finding,
-    .improvement-plan {
-        background: white;
-        padding: 20px;
-        margin: 15px 0;
-        border-radius: 5px;
-        border-left: 5px solid #ff9500;
-    }
-
-    .finding h4,
-    .improvement-plan h3 {
-        color: #cc5500;
-        margin-top: 0;
-    }
-
-    .metrics-table,
-    .improvements-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        background: white;
-        border-radius: 5px;
-        overflow: hidden;
-    }
-
-    .metrics-table th,
-    .improvements-table th {
-        background: #0066cc;
-        color: white;
-        padding: 12px;
-        text-align: left;
-    }
-
-    .metrics-table td,
-    .improvements-table td {
-        padding: 12px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .metrics-table tr:hover,
-    .improvements-table tr:hover {
-        background: #f9f9f9;
-    }
-
-    .scrutinizer-findings {
-        background: white;
-        padding: 20px;
-        border-radius: 5px;
-    }
-
-    .scrutinizer-findings h4 {
-        color: #0066cc;
-        margin-top: 15px;
-    }
-
-    .metrics-visualization {
-        text-align: center;
-        margin: 20px 0;
-    }
-
-    ul {
-        line-height: 1.8;
-    }
-
-    li {
-        margin: 8px 0;
-    }
-
-    strong {
-        color: #333;
-    }
-
-    em {
-        color: #666;
-    }
-</style>
 {% endblock %}
