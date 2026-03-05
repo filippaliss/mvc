@@ -103,8 +103,102 @@
             </div>
 
             <div class="report-section">
-                <h2 id="kmom06">Kmom06 - Avslut</h2>
-                <p>Redovisningstext för kmom06 kommer här...</p>
+                <h2 id="kmom06">Kmom06 - Automatiserad Testning & Kodkvalitet</h2>
+                
+                <h3>PHPMetrics - Verktyget och Värdefulla Insikter</h3>
+                <p>
+                    PHPMetrics är ett imponerande verktyg som ger en mycket visuell och pedagogisk bild av kodens kvalitet. 
+                    Det som verkligen stack ut för mig var <strong>komplexitetsvisualisringarna</strong> − särskilt den cirkulära 
+                    grafen som visar varje klass som en cirkel där storlek och färg indikerar komplexitet och maintainability. 
+                    Det går på ett ögonblick att identifiera problemområden.
+                </p>
+                <p>
+                    De mest värdefulla metrics för mig var:
+                </p>
+                <ul>
+                    <li><strong>Cyclomatic Complexity:</strong> Gav direkt insikt i vilka metoder som behöver förenklas</li>
+                    <li><strong>Coupling metrics (Afferent/Efferent):</strong> Visade beroenden mellan moduler och stabilitetsindex</li>
+                    <li><strong>LCOM (Lack of Cohesion of Methods):</strong> Identifierade klasser som gör för mycket</li>
+                    <li><strong>Halstead Complexity:</strong> Särskilt buggriskberäkningen (1.03 buggar i LibraryController) var konkret och actionable</li>
+                </ul>
+                <p>
+                    Visualiseringen av <strong>package relations</strong> och <strong>violation trends över tid</strong> (history-grafer) 
+                    var också mycket värdefulla − det gör det enkelt att se om koden förbättras eller försämras över tid.
+                </p>
+
+                <h3>Scrutinizer CI - Integration och Första Intryck</h3>
+                <p>
+                    Att integrera med Scrutinizer gick förvånansvärt smidigt! Efter att jag pushade min kod till GitHub 
+                    och kopplade repot till Scrutinizer började första bygget automatiskt. Scrutinizer analyserade koden, 
+                    körde tester och genererade badges inom några minuter.
+                </p>
+                <p>
+                    <strong>Resultat efter första bygget:</strong>
+                </p>
+                <ul>
+                    <li><strong>Kodkvalitet:</strong> 9.91/10 (Excellent!) − vilket var bättre än förväntat</li>
+                    <li><strong>Build Status:</strong> Passed − alla tester gick igenom</li>
+                    <li><strong>Code Coverage:</strong> Initialt 26%, nu uppe i 70% efter att jag lagt till controller-tester</li>
+                    <li><strong>Code Intelligence:</strong> Available − koden är väl strukturerad och dokumenterad</li>
+                </ul>
+                <p>
+                    <strong>Badges:</strong> Jag älskar badges! De är inte bara visuellt tillfredsställande utan fungerar 
+                    också som en snabb statusrapport. När man öppnar README på GitHub ser man direkt gröna badges 
+                    som signalerar "projektet har hög kvalitet". Det skapar förtroende för koden.
+                </p>
+                <p>
+                    Scrutinizer känns professionellt och ger konkreta förbättringsförslag. Till skillnad från PHPMetrics 
+                    (som är mer explorativt) är Scrutinizer mer normativt − den säger "här är problem, fixa dessa".
+                </p>
+
+                <h3>Min Syn på Kodkvalitet</h3>
+                <p>
+                    Kodkvalitet handlar för mig om <strong>läsbarhet, underhållbarhet och testbarhet</strong>. God kod 
+                    ska vara lätt att förstå sex månader senare (även för sin egen framtida jag!), enkel att ändra utan 
+                    att bryta saker, och välstrukturerad så att buggar snabbt kan identifieras och fixas.
+                </p>
+                <p>
+                    Jag tror starkt på <strong>The Six Cs</strong>-ramverket som vi arbetat med:
+                </p>
+                <ul>
+                    <li><strong>Complexity:</strong> Låt koden hålla sig enkel (låg cyclomatic complexity)</li>
+                    <li><strong>Cohesion:</strong> Varje klass ska ha ett tydligt, fokuserat syfte</li>
+                    <li><strong>Coupling:</strong> Minimera beroenden mellan moduler</li>
+                    <li><strong>Coverage:</strong> Tester ger trygghet vid refactoring</li>
+                    <li><strong>Consistency:</strong> Följ kodstandarder (PSR) för enhetlighet</li>
+                    <li><strong>Cleanability:</strong> Kod ska vara lätt att städa upp och förbättra</li>
+                </ul>
+                <p>
+                    <strong>Kan badges påvisa kodkvalitet?</strong> Ja, i viss mån! Badges kan visa objektiva mätvärden 
+                    som code coverage, build status och vissa kvalitetspoäng. Men badges visar inte allt − de fångar inte 
+                    upp <em>design-quality</em> som namngivning, kommentarernas värde eller arkitektoniska beslut.
+                </p>
+                <p>
+                    Badges är bra som "gatekeepers" − de säger "denna kod följer vissa minimistandarder". Men man kan fortfarande 
+                    ha 100% coverage och dålig kod om testerna är meningslösa. Badges är nödvändiga men inte tillräckliga 
+                    för att bevisa hög kvalitet. Det krävs också <strong>code reviews, arkitekturdiskussioner och faktisk användning</strong>.
+                </p>
+
+                <h3>Reflektion och Lärdomar</h3>
+                <p>
+                    Detta kmom har varit otroligt lärorikt! Att gå från 26% till 70% code coverage genom att lägga till 
+                    20 nya test-metoder försäkrade mig om att mina controllers faktiskt fungerar som de ska. 
+                    Att integrera continuous integration (Scrutinizer) och metrics-tracking (PHPMetrics) gjorde hela 
+                    utvecklingsprocessen mer transparent och kvalitetsdriven.
+                </p>
+                <p>
+                    Den största insikten var hur <strong>mätbara metrics driver förbättring</strong>. När jag såg 
+                    LibraryController ha 1.03 potentiella buggar enligt Halstead fick jag konkret motivation att refaktorera. 
+                    När coverage var 26% fanns tydlig uppmaning att skriva fler tester. Metrics gör kvalitetsarbete 
+                    från abstrakt till konkret.
+                </p>
+
+                <p><strong>TIL:</strong> "You can't improve what you don't measure" − men vägen dit var verkligen inte enkel. 
+                Jag avskydde att sätta upp Scrutinizer, eftersom jag länge inte förstod vilka fel som faktiskt uppstod. 
+                Det slutade ofta med att jag ändrade samma saker om och om igen utan att det hjälpte, vilket var väldigt frustrerande. 
+                Min största lärdom blev därför både teknisk och mental: metrics och CI kan ge tydliga kvalitetsmål, 
+                men bara om man tar sig tid att tolka verktygens feedback steg för steg istället för att "chansa-fixa". 
+                När det väl lossnade blev resultatet tydligt med stabil build och 70% coverage.</p>
             </div>
         </div>
     </div>
