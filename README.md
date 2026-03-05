@@ -1,4 +1,7 @@
 # MVC Course
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/filippaliss/mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/filippaliss/mvc/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/filippaliss/mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/filippaliss/mvc/?branch=main)
+[![Build Status](https://scrutinizer-ci.com/g/filippaliss/mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/filippaliss/mvc/build-status/main)
 
 ## Prerequisites
 Before getting started, make sure you have the following installed on your system:
