@@ -5,6 +5,7 @@ use App\DeckClass\DeckOfCards;
 use App\DeckClass\CardGraphic;
 use PHPUnit\Framework\TestCase;
 
+/** @SuppressWarnings("PHPMD.TooManyPublicMethods") */
 class DeckOfCardsTest extends TestCase
 {
     private DeckOfCards $deck;

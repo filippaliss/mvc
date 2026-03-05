@@ -5,6 +5,7 @@ use App\CardGame\Bank;
 use App\DeckClass\CardGraphic;
 use PHPUnit\Framework\TestCase;
 
+/** @SuppressWarnings("PHPMD.TooManyPublicMethods") */
 class BankTest extends TestCase
 {
     private Bank $bank;

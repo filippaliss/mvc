@@ -4,20 +4,23 @@ namespace App\Tests;
 
 use App\Controller\LibraryController;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionMethod;
 
+/** @SuppressWarnings("PHPMD.TooManyPublicMethods") */
 class LibraryControllerTest extends TestCase
 {
     private LibraryController $controller;
-    /** @var \ReflectionClass<\App\Controller\LibraryController> */
-    private \ReflectionClass $reflection;
+    /** @var ReflectionClass<LibraryController> */
+    private ReflectionClass $reflection;
 
     protected function setUp(): void
     {
         $this->controller = new LibraryController();
-        $this->reflection = new \ReflectionClass($this->controller);
+        $this->reflection = new ReflectionClass($this->controller);
     }
 
-    private function getPrivateMethod(string $methodName): \ReflectionMethod
+    private function getPrivateMethod(string $methodName): ReflectionMethod
     {
         $method = $this->reflection->getMethod($methodName);
         $method->setAccessible(true);

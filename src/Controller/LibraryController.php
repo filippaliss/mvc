@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use RuntimeException;
 
+/** @SuppressWarnings("PHPMD.TooManyPublicMethods") */
 class LibraryController extends AbstractController
 {
     private const SEED_BOOKS = [

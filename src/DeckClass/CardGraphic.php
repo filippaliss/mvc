@@ -33,6 +33,5 @@ class CardGraphic extends Card
         $characterShow = $this->getCharacter();
 
         return "<span style='color: $color; font-size: 100px;'>$characterShow</span>";
-
     }
 }
