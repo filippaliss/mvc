@@ -14,6 +14,7 @@
                 <a href="#kmom04">Kmom04</a>
                 <a href="#kmom05">Kmom05</a>
                 <a href="#kmom06">Kmom06</a>
+                <a href="#kmom10">Kmom10</a>
             </div>
 
             <div class="report-section">
@@ -199,6 +200,48 @@
                 Min största lärdom blev därför både teknisk och mental: metrics och CI kan ge tydliga kvalitetsmål, 
                 men bara om man tar sig tid att tolka verktygens feedback steg för steg istället för att "chansa-fixa". 
                 När det väl lossnade blev resultatet tydligt med stabil build och 70% coverage.</p>
+            </div>
+
+            <div class="report-section">
+                <h2 id="kmom10">Kmom10 - Projektredovisning</h2>
+
+                <h3>Krav 1, 2, 3: Webbplats</h3>
+                <p>
+                    I projektets första del (krav 1-3) byggde jag en separat webbplats under <code>/proj</code> med en tydlig landningssida och ett eget visuellt uttryck som skiljer sig från reportsidan.
+                    Jag valde att fokusera på ett Blackjack-projekt och skapade därför en projektspecifik layout med egen navbar, egen styling samt anpassade header- och footerdelar.
+                    Målet var att det direkt skulle kännas som en ny webbplats, trots att den ligger i samma Symfony-applikation.
+                    Jag implementerade även sidan <code>/proj/about</code> där jag beskriver projektets syfte, spelidé och tekniska uppbyggnad.
+                    På about-sidan redovisar jag bland annat hur klasserna för spel, spelare, dealer och händer är organiserade för att ge en tydlig bild av arkitekturen.
+                    Utöver själva webbplatsen uppdaterade jag repots dokumentation så att innehåll, struktur och körinstruktioner framgår i README.
+                    README har uppdaterats med beskrivning av projektet, hur repot är organiserat och hur man klonar och startar applikationen.
+                    Jag har även säkerställt att dokumentation i <code>docs/</code> är uppdaterad, inklusive genererad API-dokumentation och metrics-rapporter.
+                    För kodkvalitet använde jag de verktyg som ingår i kursupplägget, bland annat lint, stan, md och testkörning.
+                    Jag kontrollerade även valideringsflödet så att <code>dbwebb validate report</code> går igenom utan fel.
+                    Kodtäckning följdes upp med PHPUnit-rapportering och målet var att ligga på en hög nivå med relevanta filer i fokus.
+                    Sammantaget gav detta ett repo som är lättare att granska, köra och bedöma.
+                </p>
+
+                <h3>Allmän reflektion om projektgenomförandet</h3>
+                <p>
+                    Projektet var roligt att genomföra och upplevdes faktiskt lättare än jag hade förväntat mig.
+                    En stor anledning var att jag kunde återanvända kod och struktur från tidigare card-uppgifter, vilket gav en stabil grund från start.
+                    Det som gick lättast var att bygga upp Twig-sidorna och skapa ett tydligt flöde mellan startsida, spel och about-sida.
+                    Det som var mer utmanande var att hålla jämn kvalitet mellan funktionalitet, tester och valideringskrav samtidigt.
+                    Jag fick också lägga tid på att justera kodkvalitetsvarningar för att hela valideringskedjan skulle gå igenom utan fel.
+                    En viktig lärdom var att arbeta iterativt: göra små ändringar, testa direkt och därefter förbättra steg för steg.
+                    Sammantaget tycker jag att projektet var rimligt för kursen eftersom det på ett bra sätt kombinerar arkitektur, backendlogik och presentation.
+                </p>
+
+                <h3>Avslutande tankar om kursen</h3>
+                <p>
+                    Kursen har varit lärorik och gett en bra helhetsbild av hur man bygger webbsystem med PHP, objektorientering och ramverkstänk.
+                    Materialet har överlag varit tydligt och progressionen mellan momenten har fungerat bra.
+                    Jag tycker särskilt att kombinationen av kod, tester och analysverktyg har varit värdefull för att förstå professionellt arbetssätt.
+                    Handledningen har hjälpt mycket när jag fastnat. Jag blev själv försenad en period och blev klar senare än planerat, men stödet och de tydliga kraven gjorde det lättare att komma vidare.
+                    Ett förbättringsförslag är att ge ännu fler konkreta exempel på vad som förväntas i rapporttexterna för varje kravnivå.
+                    Ett annat förslag är att ge en kort checklista för vanliga valideringsproblem tidigt i kursen.
+                    Totalt sett är jag nöjd med kursen och skulle rekommendera den till andra som vill bygga stabil grund inom MVC och kodkvalitet.
+                </p>
             </div>
         </div>
     </div>
