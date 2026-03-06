@@ -76,11 +76,6 @@ Search.appendIndex(
             "summary": "Calculate\u0020results\u0020and\u0020update\u0020player\u0020balance.",
             "url": "classes/App-BlackJack-BlackJackGame.html#method_calculateResults"
         },                {
-            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003AdetermineOutcome\u0028\u0029",
-            "name": "determineOutcome",
-            "summary": "Determine\u0020result\u0020category\u0020for\u0020a\u0020hand\u0020against\u0020dealer\u0020hand.",
-            "url": "classes/App-BlackJack-BlackJackGame.html#method_determineOutcome"
-        },                {
             "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003Asplit\u0028\u0029",
             "name": "split",
             "summary": "Split\u0020current\u0020hand\u0020into\u0020two\u0020hands.",
@@ -111,31 +106,6 @@ Search.appendIndex(
             "summary": "Get\u0020result\u0020message\u0020for\u0020a\u0020hand.",
             "url": "classes/App-BlackJack-BlackJackGame.html#method_getHandResult"
         },                {
-            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_BUST",
-            "name": "RESULT_BUST",
-            "summary": "",
-            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_BUST"
-        },                {
-            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_BLACKJACK",
-            "name": "RESULT_BLACKJACK",
-            "summary": "",
-            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_BLACKJACK"
-        },                {
-            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_PUSH",
-            "name": "RESULT_PUSH",
-            "summary": "",
-            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_PUSH"
-        },                {
-            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_WIN",
-            "name": "RESULT_WIN",
-            "summary": "",
-            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_WIN"
-        },                {
-            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_LOSE",
-            "name": "RESULT_LOSE",
-            "summary": "",
-            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_LOSE"
-        },                {
             "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003A\u0024deck",
             "name": "deck",
             "summary": "",
@@ -160,6 +130,16 @@ Search.appendIndex(
             "name": "currentHandIndex",
             "summary": "",
             "url": "classes/App-BlackJack-BlackJackGame.html#property_currentHandIndex"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003A\u0024outcomeEvaluator",
+            "name": "outcomeEvaluator",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackGame.html#property_outcomeEvaluator"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003A\u0024splitService",
+            "name": "splitService",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackGame.html#property_splitService"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJackHand",
             "name": "BlackJackHand",
@@ -231,6 +211,11 @@ Search.appendIndex(
             "summary": "Get\u0020HTML\u0020representation\u0020of\u0020all\u0020cards\u0020in\u0020hand.",
             "url": "classes/App-BlackJack-BlackJackHand.html#method_getCardsHTML"
         },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackHand\u003A\u003ArenderCardHtml\u0028\u0029",
+            "name": "renderCardHtml",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackHand.html#method_renderCardHtml"
+        },                {
             "fqsen": "\\App\\BlackJack\\BlackJackHand\u003A\u003AgetCardCount\u0028\u0029",
             "name": "getCardCount",
             "summary": "Get\u0020number\u0020of\u0020cards\u0020in\u0020hand.",
@@ -250,6 +235,51 @@ Search.appendIndex(
             "name": "isSplit",
             "summary": "",
             "url": "classes/App-BlackJack-BlackJackHand.html#property_isSplit"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator",
+            "name": "BlackJackOutcomeEvaluator",
+            "summary": "Evaluates\u0020hand\u0020outcomes\u0020and\u0020related\u0020payouts\/messages\u0020in\u0020Black\u0020Jack.",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator\u003A\u003AdetermineOutcome\u0028\u0029",
+            "name": "determineOutcome",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html#method_determineOutcome"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator\u003A\u003ApayoutForOutcome\u0028\u0029",
+            "name": "payoutForOutcome",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html#method_payoutForOutcome"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator\u003A\u003AmessageForOutcome\u0028\u0029",
+            "name": "messageForOutcome",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html#method_messageForOutcome"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator\u003A\u003ARESULT_BUST",
+            "name": "RESULT_BUST",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html#constant_RESULT_BUST"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator\u003A\u003ARESULT_BLACKJACK",
+            "name": "RESULT_BLACKJACK",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html#constant_RESULT_BLACKJACK"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator\u003A\u003ARESULT_PUSH",
+            "name": "RESULT_PUSH",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html#constant_RESULT_PUSH"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator\u003A\u003ARESULT_WIN",
+            "name": "RESULT_WIN",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html#constant_RESULT_WIN"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackOutcomeEvaluator\u003A\u003ARESULT_LOSE",
+            "name": "RESULT_LOSE",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackOutcomeEvaluator.html#constant_RESULT_LOSE"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJackPlayer",
             "name": "BlackJackPlayer",
@@ -330,6 +360,31 @@ Search.appendIndex(
             "name": "hands",
             "summary": "",
             "url": "classes/App-BlackJack-BlackJackPlayer.html#property_hands"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackSplitService",
+            "name": "BlackJackSplitService",
+            "summary": "Handles\u0020split\u0020operation\u0020for\u0020a\u0020current\u0020player\u0020hand.",
+            "url": "classes/App-BlackJack-BlackJackSplitService.html"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackSplitService\u003A\u003AsplitCurrentHand\u0028\u0029",
+            "name": "splitCurrentHand",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackSplitService.html#method_splitCurrentHand"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackSplitService\u003A\u003AbuildSplitHands\u0028\u0029",
+            "name": "buildSplitHands",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackSplitService.html#method_buildSplitHands"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackSplitService\u003A\u003AdealSplitCards\u0028\u0029",
+            "name": "dealSplitCards",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackSplitService.html#method_dealSplitCards"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackSplitService\u003A\u003AreplaceCurrentHandWith\u0028\u0029",
+            "name": "replaceCurrentHandWith",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackSplitService.html#method_replaceCurrentHandWith"
         },                {
             "fqsen": "\\App\\CardGame\\Bank",
             "name": "Bank",
@@ -571,6 +626,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LibraryController.html#method_loadBooks"
         },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AseedAndReturnBooks\u0028\u0029",
+            "name": "seedAndReturnBooks",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_seedAndReturnBooks"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AsortBooksByTitle\u0028\u0029",
+            "name": "sortBooksByTitle",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_sortBooksByTitle"
+        },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AsaveBooks\u0028\u0029",
             "name": "saveBooks",
             "summary": "",
@@ -730,6 +795,16 @@ Search.appendIndex(
             "name": "startRound",
             "summary": "Start\u0020a\u0020new\u0020round\u0020with\u0020bet\u0020and\u0020number\u0020of\u0020hands.",
             "url": "classes/App-Controller-ProjectController.html#method_startRound"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AcreatePlayerFromSession\u0028\u0029",
+            "name": "createPlayerFromSession",
+            "summary": "",
+            "url": "classes/App-Controller-ProjectController.html#method_createPlayerFromSession"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AreadRoundInput\u0028\u0029",
+            "name": "readRoundInput",
+            "summary": "",
+            "url": "classes/App-Controller-ProjectController.html#method_readRoundInput"
         },                {
             "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Aplay\u0028\u0029",
             "name": "play",

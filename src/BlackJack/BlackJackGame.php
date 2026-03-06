@@ -14,12 +14,6 @@ use App\DeckClass\DeckOfCards;
  */
 class BlackJackGame
 {
-    private const RESULT_BUST = 'bust';
-    private const RESULT_BLACKJACK = 'blackjack';
-    private const RESULT_PUSH = 'push';
-    private const RESULT_WIN = 'win';
-    private const RESULT_LOSE = 'lose';
-
     /**
      * @var DeckOfCards The deck of cards
      */
@@ -45,6 +39,10 @@ class BlackJackGame
      */
     private int $currentHandIndex = 0;
 
+    private BlackJackOutcomeEvaluator $outcomeEvaluator;
+
+    private BlackJackSplitService $splitService;
+
     /**
      * BlackJackGame constructor.
      *
@@ -56,6 +54,8 @@ class BlackJackGame
         $this->dealer = new BlackJackDealer();
         $this->deck = new DeckOfCards();
         $this->gameState = 'betting';
+        $this->outcomeEvaluator = new BlackJackOutcomeEvaluator();
+        $this->splitService = new BlackJackSplitService();
     }
 
     /**
@@ -211,55 +211,12 @@ class BlackJackGame
 
         foreach ($this->player->getHands() as $hand) {
             $bet = $hand->getBet();
-            $outcome = $this->determineOutcome($hand, $dealerHand);
-
-            switch ($outcome) {
-                case self::RESULT_BLACKJACK:
-                    $this->player->addBalance($bet + (int) ($bet * 1.5));
-                    break;
-                case self::RESULT_PUSH:
-                    $this->player->addBalance($bet);
-                    break;
-                case self::RESULT_WIN:
-                    $this->player->addBalance($bet * 2);
-                    break;
-                default:
-                    // Loss/bust: stake was already deducted at bet placement.
-                    break;
+            $outcome = $this->outcomeEvaluator->determineOutcome($hand, $dealerHand);
+            $payout = $this->outcomeEvaluator->payoutForOutcome($outcome, $bet);
+            if ($payout > 0) {
+                $this->player->addBalance($payout);
             }
         }
-    }
-
-    /**
-     * Determine result category for a hand against dealer hand.
-     */
-    private function determineOutcome(BlackJackHand $playerHand, BlackJackHand $dealerHand): string
-    {
-        $dealerValue = $dealerHand->getValue();
-        $dealerBust = $dealerHand->isBust();
-        $dealerBlackJack = $dealerHand->isBlackJack();
-
-        $playerValue = $playerHand->getValue();
-        $playerBust = $playerHand->isBust();
-        $playerBlackJack = $playerHand->isBlackJack();
-
-        if ($playerBust) {
-            return self::RESULT_BUST;
-        }
-
-        if ($playerBlackJack && !$dealerBlackJack) {
-            return self::RESULT_BLACKJACK;
-        }
-
-        if ($playerValue === $dealerValue) {
-            return self::RESULT_PUSH;
-        }
-
-        if ($dealerBust || $playerValue > $dealerValue) {
-            return self::RESULT_WIN;
-        }
-
-        return self::RESULT_LOSE;
     }
 
     /**
@@ -269,83 +226,7 @@ class BlackJackGame
      */
     public function split(): bool
     {
-        $hand = $this->getCurrentSplittableHand();
-        if ($hand === null) {
-            return false;
-        }
-
-        $bet = $hand->getBet();
-        if (!$this->canPlaceSplitBet($bet)) {
-            return false;
-        }
-
-        $this->player->placeBet($bet);
-        [$originalHand, $newHand] = $this->buildSplitHands($hand, $bet);
-        $this->dealSplitCards($originalHand, $newHand);
-        $this->replaceCurrentHandWith($originalHand, $newHand);
-
-        return true;
-    }
-
-    private function getCurrentSplittableHand(): ?BlackJackHand
-    {
-        $hand = $this->player->getHand($this->currentHandIndex);
-        if ($hand === null || !$hand->canSplit()) {
-            return null;
-        }
-
-        return $hand;
-    }
-
-    private function canPlaceSplitBet(int $bet): bool
-    {
-        return $this->player->canAfford($bet);
-    }
-
-    /**
-     * @return array{0: BlackJackHand, 1: BlackJackHand}
-     */
-    private function buildSplitHands(BlackJackHand $hand, int $bet): array
-    {
-        $cards = $hand->getCards();
-
-        $newHand = new BlackJackHand();
-        $newHand->setBet($bet);
-        $newHand->addCard($cards[1]);
-        $newHand->markAsSplit();
-
-        $originalHand = new BlackJackHand();
-        $originalHand->setBet($bet);
-        $originalHand->addCard($cards[0]);
-        $originalHand->markAsSplit();
-
-        return [$originalHand, $newHand];
-    }
-
-    private function dealSplitCards(BlackJackHand $originalHand, BlackJackHand $newHand): void
-    {
-        $card1 = $this->deck->drawCard();
-        $card2 = $this->deck->drawCard();
-
-        if ($card1 !== null) {
-            $originalHand->addCard($card1);
-        }
-
-        if ($card2 !== null) {
-            $newHand->addCard($card2);
-        }
-    }
-
-    private function replaceCurrentHandWith(BlackJackHand $originalHand, BlackJackHand $newHand): void
-    {
-        $hands = $this->player->getHands();
-        $hands[$this->currentHandIndex] = $originalHand;
-        array_splice($hands, $this->currentHandIndex + 1, 0, [$newHand]);
-
-        $this->player->clearHands();
-        foreach ($hands as $h) {
-            $this->player->addHand($h);
-        }
+        return $this->splitService->splitCurrentHand($this->player, $this->deck, $this->currentHandIndex);
     }
 
     /**
@@ -401,19 +282,8 @@ class BlackJackGame
         }
 
         $dealerHand = $this->dealer->getHand();
-        $outcome = $this->determineOutcome($hand, $dealerHand);
+        $outcome = $this->outcomeEvaluator->determineOutcome($hand, $dealerHand);
 
-        switch ($outcome) {
-            case self::RESULT_BUST:
-                return 'BUST - You lose';
-            case self::RESULT_BLACKJACK:
-                return 'BLACKJACK! - You win 1.5x';
-            case self::RESULT_PUSH:
-                return 'PUSH - Tie';
-            case self::RESULT_WIN:
-                return 'WIN';
-            default:
-                return 'LOSE';
-        }
+        return $this->outcomeEvaluator->messageForOutcome($outcome);
     }
 }
