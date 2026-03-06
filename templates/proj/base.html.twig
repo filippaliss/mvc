@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Black Jack{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="proj-site">
+        <header>
+            <nav>
+                <ul class="proj-nav">
+                    <li><a href="{{ path('proj_index') }}">Home</a></li>
+                    <li><a href="{{ path('proj_game') }}">Play Game</a></li>
+                    <li><a href="{{ path('proj_about') }}">About</a></li>
+                    <li><a href="{{ path('home') }}">← Back to Report</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main class="container">
+            {% for message in app.flashes('success') %}
+                <div class="flash-message flash-success">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="flash-message flash-error">{{ message }}</div>
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>&copy; {{ "now"|date("Y") }} Filippa Lissäng Öst - Black Jack Project</p>
+            <p><a href="{{ path('home') }}">Return to Main Site</a></p>
+        </footer>
+    </body>
+</html>

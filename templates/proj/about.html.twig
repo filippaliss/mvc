@@ -1,0 +1,106 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}About - Black Jack Project{% endblock %}
+
+{% block body %}
+    <div style="max-width: 900px; margin: 0 auto;">
+        <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">About This Project</h1>
+
+        <div class="game-table">
+            <h2>Project Overview</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                This is a web-based Black Jack game developed as a course project for the MVC course. 
+                The project demonstrates object-oriented programming, game logic implementation, and 
+                web application development using PHP and Symfony.
+            </p>
+        </div>
+
+        <div class="game-table">
+            <h2>Game Description</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                In this Black Jack implementation, you play as a single player against an automated dealer. 
+                You can:
+            </p>
+            <ul style="font-size: 1.1rem; line-height: 2rem;">
+                <li><strong>Enter your player name</strong> to personalize your gaming experience</li>
+                <li><strong>Manage a virtual bank account</strong> starting with 1000 credits</li>
+                <li><strong>Play 1-3 hands simultaneously</strong> to increase your winning chances</li>
+                <li><strong>Place bets</strong> on each hand and watch your balance grow</li>
+                <li><strong>Split pairs</strong> when you receive matching cards</li>
+                <li><strong>Follow official Black Jack rules</strong> for an authentic experience</li>
+            </ul>
+        </div>
+
+        <div class="game-table">
+            <h2>Technical Implementation</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                The project is built using:
+            </p>
+            <ul style="font-size: 1.1rem; line-height: 2rem;">
+                <li><strong>PHP 8.2+</strong> for backend logic</li>
+                <li><strong>Symfony Framework</strong> for routing and controllers</li>
+                <li><strong>Object-Oriented Design</strong> with separate classes for Player, Dealer, Hand, and Game</li>
+                <li><strong>Session Management</strong> to persist game state</li>
+                <li><strong>Twig Templates</strong> for dynamic rendering</li>
+                <li><strong>CSS Styling</strong> with a custom Black Jack theme</li>
+            </ul>
+        </div>
+
+        <div class="game-table">
+            <h2>Project Structure</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                The project is organized in the <code>/report</code> directory with the following components:
+            </p>
+            <ul style="font-size: 1.1rem; line-height: 2rem;">
+                <li><strong>src/BlackJack/</strong> - Core game classes (BlackJackGame, BlackJackPlayer, BlackJackDealer, BlackJackHand)</li>
+                <li><strong>src/Controller/ProjectController.php</strong> - Handles all game routes and logic</li>
+                <li><strong>templates/proj/</strong> - Twig templates for the game interface</li>
+                <li><strong>src/DeckClass/</strong> - Reused card and deck classes</li>
+                <li><strong>style/_project.css</strong> - Styling for the game</li>
+            </ul>
+        </div>
+
+        <div class="game-table">
+            <h2>Key Features</h2>
+            <ul style="font-size: 1.1rem; line-height: 2rem;">
+                <li>Player name registration and personalization</li>
+                <li>Virtual bank account with bet management</li>
+                <li><Play multiple hands (1-3) in a single round</li>
+                <li>Official Black Jack rules implementation</li>
+                <li>Split functionality for matching pairs</li>
+                <li>Automatic dealer play (hits until 17)</li>
+                <li>Win/lose/push calculations with 1.5x payout for Black Jack</li>
+                <li>Responsive design with custom styling</li>
+                <li>Separate navigation for project pages</li>
+            </ul>
+        </div>
+
+        <div class="game-table">
+            <h2>Course Requirements</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                This project fulfills the following course requirements:
+            </p>
+            <ul style="font-size: 1.1rem; line-height: 2rem;">
+                <li><strong>Requirement 1:</strong> Landing page at /proj with project-specific styling</li>
+                <li><strong>Requirement 2:</strong> About page describing the project</li>
+                <li><strong>Requirement 3:</strong> Full Black Jack implementation with betting system</li>
+                <li>Distinct visual style from report site</li>
+                <li>Separate navbar for project</li>
+                <li>Documentation and code coverage</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="{{ path('proj_game') }}" class="btn" style="font-size: 1.3rem; padding: 1rem 3rem;">
+                Start Playing Now
+            </a>
+        </div>
+
+        <div class="game-table">
+            <h2>👨‍💻 Developer</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Developed by <strong>Filippa Lissäng Öst</strong> as part of the MVC course project.
+            </p>
+        </div>
+    </div>
+{% endblock %}

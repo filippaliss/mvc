@@ -1,0 +1,533 @@
+/* Project-specific styles for /proj pages */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.proj-site {
+    --proj-bg-main: #0F0026;
+    --proj-bg-secondary: #1A0033;
+    --proj-panel: #240046;
+    --proj-accent: #FF2ED1;
+    --proj-purple-strong: #7B2CBF;
+    --proj-purple-light: #C77DFF;
+    --proj-table-felt: #1F0B3A;
+    --proj-table-glow: #9D4EDD;
+    --proj-btn-hover: #FF6AD5;
+    --proj-btn-active: #C918A6;
+    --proj-text-main: #F5E9FF;
+    --proj-text-secondary: #CDB4DB;
+    --proj-text-muted: #7A6C91;
+    --proj-border: #9D4EDD;
+    --proj-shadow: #0A001A;
+    --proj-win: #00F5D4;
+
+    background: radial-gradient(circle at 20% 0%, #1A0033 0%, #0F0026 55%, #0A001A 100%);
+    color: var(--proj-text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+body.proj-site header {
+    background: color-mix(in srgb, var(--proj-bg-secondary) 85%, black 15%);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--proj-border);
+    box-shadow: 0 2px 14px var(--proj-shadow);
+}
+
+body.proj-site .proj-nav {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+body.proj-site .proj-nav a {
+    color: var(--proj-text-main);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+body.proj-site .proj-nav a:hover {
+    background: color-mix(in srgb, var(--proj-purple-strong) 45%, transparent);
+    border-color: var(--proj-border);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--proj-table-glow) 45%, transparent),
+        0 0 18px color-mix(in srgb, var(--proj-accent) 30%, transparent);
+}
+
+body.proj-site .container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+body.proj-site footer {
+    background: color-mix(in srgb, var(--proj-bg-secondary) 85%, black 15%);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 4rem;
+    color: var(--proj-text-secondary);
+    border-top: 1px solid var(--proj-border);
+}
+
+body.proj-site footer a {
+    color: var(--proj-purple-light);
+    text-decoration: none;
+}
+
+body.proj-site footer a:hover {
+    text-decoration: underline;
+}
+
+body.proj-site .card-display {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+body.proj-site .btn {
+    background: var(--proj-accent);
+    color: var(--proj-bg-main);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.5rem;
+    font-weight: 700;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--proj-accent) 35%, transparent),
+        0 0 14px color-mix(in srgb, var(--proj-accent) 30%, transparent);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+body.proj-site .btn:hover {
+    background: var(--proj-btn-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px color-mix(in srgb, var(--proj-accent) 45%, transparent),
+        0 0 24px color-mix(in srgb, var(--proj-accent) 40%, transparent);
+}
+
+body.proj-site .btn:active {
+    background: var(--proj-btn-active);
+    transform: translateY(0);
+}
+
+body.proj-site .btn-danger {
+    background: var(--proj-purple-strong);
+    color: var(--proj-text-main);
+}
+
+body.proj-site .btn-danger:hover {
+    background: var(--proj-table-glow);
+}
+
+body.proj-site .btn-warning {
+    background: var(--proj-purple-light);
+    color: var(--proj-bg-main);
+}
+
+body.proj-site .btn-warning:hover {
+    background: color-mix(in srgb, var(--proj-purple-light) 80%, white 20%);
+}
+
+body.proj-site .btn-success {
+    background: linear-gradient(135deg, var(--proj-purple-strong) 0%, var(--proj-table-glow) 100%);
+    color: var(--proj-text-main);
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--proj-table-glow) 40%, transparent),
+        0 0 14px color-mix(in srgb, var(--proj-purple-light) 35%, transparent);
+}
+
+body.proj-site .btn-success:hover {
+    background: linear-gradient(135deg, var(--proj-table-glow) 0%, var(--proj-purple-light) 100%);
+    box-shadow: 0 10px 22px color-mix(in srgb, var(--proj-table-glow) 50%, transparent),
+        0 0 24px color-mix(in srgb, var(--proj-purple-light) 45%, transparent);
+}
+
+body.proj-site .btn-primary {
+    background: linear-gradient(135deg, var(--proj-accent) 0%, var(--proj-btn-hover) 100%);
+    color: var(--proj-bg-main);
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--proj-accent) 40%, transparent),
+        0 0 14px color-mix(in srgb, var(--proj-accent) 35%, transparent);
+}
+
+body.proj-site .btn-primary:hover {
+    background: linear-gradient(135deg, var(--proj-btn-hover) 0%, var(--proj-accent) 100%);
+    box-shadow: 0 10px 22px color-mix(in srgb, var(--proj-accent) 50%, transparent),
+        0 0 24px color-mix(in srgb, var(--proj-btn-hover) 45%, transparent);
+}
+
+body.proj-site .btn-secondary {
+    background: linear-gradient(135deg, var(--proj-table-glow) 0%, var(--proj-win) 100%);
+    color: var(--proj-bg-main);
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--proj-win) 40%, transparent),
+        0 0 14px color-mix(in srgb, var(--proj-table-glow) 35%, transparent);
+}
+
+body.proj-site .btn-secondary:hover {
+    background: linear-gradient(135deg, var(--proj-win) 0%, var(--proj-table-glow) 100%);
+    box-shadow: 0 10px 22px color-mix(in srgb, var(--proj-win) 50%, transparent),
+        0 0 24px color-mix(in srgb, var(--proj-win) 45%, transparent);
+}
+
+body.proj-site .game-table {
+    background: linear-gradient(180deg, var(--proj-panel) 0%, var(--proj-table-felt) 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid var(--proj-border);
+    box-shadow: 0 6px 24px var(--proj-shadow),
+        0 0 18px color-mix(in srgb, var(--proj-table-glow) 40%, transparent),
+        inset 0 0 14px color-mix(in srgb, var(--proj-purple-strong) 22%, transparent);
+}
+
+body.proj-site .hand-container {
+    background: color-mix(in srgb, var(--proj-bg-secondary) 78%, transparent);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border: 1px solid color-mix(in srgb, var(--proj-border) 45%, transparent);
+}
+
+body.proj-site .flash-message {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    background: color-mix(in srgb, var(--proj-bg-secondary) 80%, transparent);
+    border: 1px solid var(--proj-border);
+}
+
+body.proj-site .flash-success {
+    color: var(--proj-win);
+    border-color: var(--proj-win);
+}
+
+body.proj-site .flash-error {
+    color: var(--proj-accent);
+    border-color: var(--proj-accent);
+}
+
+body.proj-site input[type="text"],
+body.proj-site input[type="number"],
+body.proj-site select {
+    background: var(--proj-bg-secondary);
+    color: var(--proj-text-main);
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid var(--proj-border);
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--proj-accent) 35%, transparent);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+body.proj-site input[type="text"]::placeholder {
+    color: var(--proj-text-muted);
+}
+
+body.proj-site input[type="text"]:focus,
+body.proj-site input[type="number"]:focus,
+body.proj-site select:focus {
+    outline: none;
+    border-color: var(--proj-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--proj-accent) 30%, transparent),
+        0 0 14px color-mix(in srgb, var(--proj-table-glow) 30%, transparent);
+    transform: translateY(-1px);
+}
+
+body.proj-site label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--proj-text-secondary);
+    letter-spacing: 0.2px;
+}
+
+body.proj-site .balance-display {
+    font-size: 1.5rem;
+    background: color-mix(in srgb, var(--proj-purple-strong) 28%, transparent);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    text-align: center;
+    border: 1px solid var(--proj-border);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--proj-table-glow) 40%, transparent),
+        0 0 22px color-mix(in srgb, var(--proj-accent) 18%, transparent);
+}
+
+body.proj-site .proj-page {
+    margin: 0 auto;
+}
+
+body.proj-site .proj-page-narrow {
+    max-width: 800px;
+}
+
+body.proj-site .proj-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+body.proj-site .form-section-center {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+body.proj-site .form-inline {
+    display: inline;
+}
+
+body.proj-site .form-section-gap {
+    margin-top: 2rem;
+}
+
+body.proj-site .proj-form {
+    display: grid;
+    gap: 0.35rem;
+    max-width: 460px;
+    background: color-mix(in srgb, var(--proj-bg-secondary) 82%, black 18%);
+    border: 1px solid color-mix(in srgb, var(--proj-border) 55%, transparent);
+    border-radius: 12px;
+    padding: 1rem 1rem 1.25rem;
+    box-shadow: 0 0 16px color-mix(in srgb, var(--proj-table-glow) 25%, transparent);
+}
+
+body.proj-site .form-actions {
+    margin-top: 1.1rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+body.proj-site .form-note {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+}
+
+body.proj-site .rules-list {
+    font-size: 1rem;
+    line-height: 1.8rem;
+}
+
+body.proj-site p,
+body.proj-site li {
+    color: var(--proj-text-secondary);
+}
+
+body.proj-site h1,
+body.proj-site h2,
+body.proj-site h3,
+body.proj-site strong,
+body.proj-site code {
+    color: var(--proj-text-main);
+}
+
+body.proj-site h1,
+body.proj-site h2 {
+    text-shadow: 0 0 10px color-mix(in srgb, var(--proj-table-glow) 35%, transparent);
+}
+
+body.proj-site .card-display {
+    text-shadow: 0 0 10px color-mix(in srgb, var(--proj-purple-light) 35%, transparent),
+        0 0 18px color-mix(in srgb, var(--proj-accent) 25%, transparent);
+}
+
+body.proj-site .status-bust {
+    color: var(--proj-accent);
+}
+
+body.proj-site .status-blackjack {
+    color: var(--proj-purple-light);
+}
+
+body.proj-site .status-standing,
+body.proj-site .status-win,
+body.proj-site .status-active {
+    color: var(--proj-win);
+}
+
+body.proj-site .hand-container.is-active {
+    border: 3px solid var(--proj-table-glow);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--proj-table-glow) 50%, transparent),
+        0 0 28px color-mix(in srgb, var(--proj-accent) 35%, transparent);
+}
+
+body.proj-site a {
+    color: var(--proj-purple-light);
+}
+
+body.proj-site a:hover {
+    color: var(--proj-accent);
+}
+
+/* Game Table Layout */
+body.proj-site .table-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+body.proj-site .page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+body.proj-site .dealer-area {
+    background: linear-gradient(180deg, var(--proj-panel) 0%, var(--proj-table-felt) 100%);
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border: 2px solid var(--proj-border);
+    box-shadow: 0 6px 24px var(--proj-shadow),
+        0 0 18px color-mix(in srgb, var(--proj-table-glow) 40%, transparent);
+}
+
+body.proj-site .dealer-area h2 {
+    text-align: center;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+}
+
+body.proj-site .dealer-hand {
+    text-align: center;
+}
+
+body.proj-site .dealer-hand .card-display {
+    font-size: 3rem;
+    margin: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+body.proj-site .dealer-value {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+body.proj-site .player-area {
+    background: linear-gradient(180deg, var(--proj-panel) 0%, var(--proj-table-felt) 100%);
+    border-radius: 20px;
+    padding: 0.75rem 1rem;
+    margin: 1.5rem 0;
+    border: 2px solid var(--proj-border);
+    box-shadow: 0 6px 24px var(--proj-shadow),
+        0 0 18px color-mix(in srgb, var(--proj-table-glow) 40%, transparent);
+    scroll-margin-top: 2rem;
+}
+
+body.proj-site .player-area > h2 {
+    text-align: center;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+}
+
+body.proj-site .hands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+body.proj-site .hand-container {
+    background: color-mix(in srgb, var(--proj-bg-secondary) 85%, transparent);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    border: 2px solid color-mix(in srgb, var(--proj-border) 50%, transparent);
+    transition: all 0.3s ease;
+}
+
+body.proj-site .hand-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+body.proj-site .hand-container .card-display {
+    font-size: 3rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+body.proj-site .hand-info {
+    text-align: center;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+body.proj-site .hand-actions {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+body.proj-site .hand-actions .btn {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+body.proj-site .hand-result {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--proj-bg-main) 70%, transparent);
+    border: 1px solid var(--proj-border);
+}
+
+body.proj-site .game-controls {
+    text-align: center;
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+body.proj-site .game-controls .btn {
+    font-size: 1.1rem;
+    padding: 0.9rem 1.8rem;
+}
+
+body.proj-site .dealer-status {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--proj-purple-strong) 28%, transparent);
+    border-radius: 10px;
+    border: 1px solid var(--proj-border);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body.proj-site .hands-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    body.proj-site .hand-container .card-display {
+        font-size: 2.5rem;
+    }
+    
+    body.proj-site .dealer-hand .card-display {
+        font-size: 3rem;
+    }
+}

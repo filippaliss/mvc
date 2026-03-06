@@ -1,0 +1,119 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Playing Black Jack{% endblock %}
+
+{% block body %}
+    <div class="table-layout">
+        <h1 class="page-title">🎰 Black Jack Table 🎰</h1>
+
+        <div class="balance-display">
+            <strong>👤 Player:</strong> {{ player.name }}<br>
+            <strong>💰 Balance:</strong> {{ player.balance }} credits
+        </div>
+
+        {# Dealer's Hand #}
+        <div class="dealer-area">
+            <h2>🏦 Dealer's Hand</h2>
+            <div class="dealer-hand">
+                <div class="card-display">
+                    {% if gameState == 'finished' %}
+                        {{ dealer.hand.cardsHTML(false)|raw }}
+                    {% else %}
+                        {{ dealer.hand.cardsHTML(true)|raw }}
+                    {% endif %}
+                </div>
+                <p class="dealer-value">
+                    {% if gameState == 'finished' %}
+                        <strong>Value:</strong> {{ dealer.hand.value }}
+                        {% if dealer.hand.isBust %}
+                            - <span class="status-bust">BUST!</span>
+                        {% elseif dealer.hand.isBlackJack %}
+                            - <span class="status-blackjack">BLACKJACK!</span>
+                        {% endif %}
+                    {% else %}
+                        <strong>Value:</strong> ?
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+        {# Player's Hands #}
+        <div id="player-hands" class="player-area">
+            <h2>👤 Your Hands</h2>
+            <div class="hands-grid">
+                {% for index, hand in player.hands %}
+                    <div class="hand-container {% if gameState == 'playing' and currentHandIndex == index %}is-active{% endif %}">
+                        <h3>
+                            Hand {{ index + 1 }} 
+                            {% if gameState == 'playing' and currentHandIndex == index %}
+                                <span class="status-active">← Your Turn</span>
+                            {% endif %}
+                        </h3>
+                        <div class="card-display">
+                            {{ hand.cardsHTML(false)|raw }}
+                        </div>
+                        <div class="hand-info">
+                            <strong>Bet:</strong> {{ hand.bet }} credits | 
+                            <strong>Value:</strong> {{ hand.value }}
+                            {% if hand.isBust %}
+                                - <span class="status-bust">BUST!</span>
+                            {% elseif hand.isBlackJack %}
+                                - <span class="status-blackjack">BLACKJACK!</span>
+                            {% elseif hand.isStanding %}
+                                - <span class="status-standing">STANDING</span>
+                            {% endif %}
+                        </div>
+
+                        {# Show result if game is finished #}
+                        {% if gameState == 'finished' %}
+                            <div class="hand-result">
+                                {{ game.getHandResult(hand) }}
+                            </div>
+                        {% endif %}
+
+                        {# Action buttons for current hand #}
+                        {% if gameState == 'playing' and currentHandIndex == index and not hand.isStanding %}
+                            <div class="hand-actions">
+                                <form method="post" action="{{ path('proj_hit') }}#player-hands" class="form-inline">
+                                    <button type="submit" class="btn btn-primary">🃏 Hit</button>
+                                </form>
+
+                                <form method="post" action="{{ path('proj_stand') }}#player-hands" class="form-inline">
+                                    <button type="submit" class="btn btn-warning">✋ Stand</button>
+                                </form>
+
+                                {% if hand.canSplit and player.canAfford(hand.bet) %}
+                                    <form method="post" action="{{ path('proj_split') }}#player-hands" class="form-inline">
+                                        <button type="submit" class="btn btn-secondary">✂️ Split</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {# Game controls #}
+        <div class="game-controls">
+            {% if gameState == 'finished' %}
+                <form method="post" action="{{ path('proj_end') }}" class="form-inline">
+                    <button type="submit" class="btn btn-success">
+                        🎲 New Round
+                    </button>
+                </form>
+            {% endif %}
+
+            <a href="{{ path('proj_game') }}" class="btn btn-danger">
+                🚪 Exit to Lobby
+            </a>
+        </div>
+
+        {# Game State Info #}
+        {% if gameState == 'dealer' %}
+            <div class="dealer-status status-active">
+                ⏳ Dealer is playing...
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
