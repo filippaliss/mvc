@@ -82,20 +82,14 @@ class ProjectController extends AbstractController
     #[Route('/proj/start', name: 'proj_start', methods: ['POST'])]
     public function startRound(Request $request, SessionInterface $session): Response
     {
-        // Get player from session
-        $playerData = $session->get('blackjack_player');
-        if (!$playerData) {
+        $player = $this->createPlayerFromSession($session);
+        if ($player === null) {
             $this->addFlash('error', 'Please enter your name first.');
             return $this->redirectToRoute('proj_game');
         }
 
-        $player = new BlackJackPlayer($playerData['name'], $playerData['balance']);
+        [$bet, $numHands] = $this->readRoundInput($request);
 
-        // Get bet and number of hands
-        $bet = (int)$request->request->get('bet', 10);
-        $numHands = (int)$request->request->get('num_hands', 1);
-
-        // Validate
         if ($bet < 1) {
             $this->addFlash('error', 'Bet must be at least 1.');
             return $this->redirectToRoute('proj_game');
@@ -115,6 +109,33 @@ class ProjectController extends AbstractController
         $this->syncPlayerDataFromGame($session, $game);
 
         return $this->redirectToRoute('proj_play');
+    }
+
+    private function createPlayerFromSession(SessionInterface $session): ?BlackJackPlayer
+    {
+        $playerData = $session->get('blackjack_player');
+        if (!is_array($playerData)) {
+            return null;
+        }
+
+        $name = $playerData['name'] ?? null;
+        $balance = $playerData['balance'] ?? null;
+        if (!is_string($name) || !is_int($balance)) {
+            return null;
+        }
+
+        return new BlackJackPlayer($name, $balance);
+    }
+
+    /**
+     * @return array{0: int, 1: int}
+     */
+    private function readRoundInput(Request $request): array
+    {
+        $bet = (int) $request->request->get('bet', 10);
+        $numHands = (int) $request->request->get('num_hands', 1);
+
+        return [$bet, $numHands];
     }
 
     /**

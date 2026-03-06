@@ -235,4 +235,28 @@ class BlackJackHandTest extends TestCase
         // Should be 1 + 1 + 9 = 11 (both aces as 1)
         $this->assertEquals(21, $hand->getValue());
     }
+
+    public function testGetCardsHtmlShowsAllCardsByDefault(): void
+    {
+        $hand = new BlackJackHand();
+        $hand->addCard(new CardGraphic('hearts', 'A'));
+        $hand->addCard(new CardGraphic('spades', 'K'));
+
+        $html = $hand->getCardsHTML();
+
+        $this->assertStringNotContainsString('card-back', $html);
+        $this->assertSame(2, substr_count($html, 'font-size: 100px'));
+    }
+
+    public function testGetCardsHtmlCanHideFirstCard(): void
+    {
+        $hand = new BlackJackHand();
+        $hand->addCard(new CardGraphic('hearts', 'A'));
+        $hand->addCard(new CardGraphic('spades', 'K'));
+
+        $html = $hand->getCardsHTML(true);
+
+        $this->assertStringContainsString('card-back', $html);
+        $this->assertSame(1, substr_count($html, 'font-size: 100px'));
+    }
 }

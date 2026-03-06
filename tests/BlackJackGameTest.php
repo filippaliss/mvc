@@ -5,6 +5,8 @@ namespace App\Tests;
 use PHPUnit\Framework\TestCase;
 use App\BlackJack\BlackJackGame;
 use App\BlackJack\BlackJackPlayer;
+use App\BlackJack\BlackJackHand;
+use App\DeckClass\CardGraphic;
 
 /**
  * Test cases for BlackJackGame class.
@@ -209,17 +211,19 @@ class BlackJackGameTest extends TestCase
     {
         $player = new BlackJackPlayer('John', 1000);
         $game = new BlackJackGame($player);
-        $game->startRound(1, 50);
-        
-        $hand = $player->getHand(0);
-        $this->assertNotNull($hand);
-        
-        // Only test if hand can actually be split
-        if ($hand->canSplit()) {
-            $result = $game->split();
-            $this->assertTrue($result);
-            $this->assertEquals(2, $player->getHandCount());
-        }
+        $hand = new BlackJackHand();
+        $hand->setBet(50);
+        $hand->addCard(new CardGraphic('hearts', '8'));
+        $hand->addCard(new CardGraphic('diamonds', '8'));
+        $player->addHand($hand);
+
+        $result = $game->split();
+
+        $this->assertTrue($result);
+        $this->assertEquals(2, $player->getHandCount());
+        $this->assertEquals(950, $player->getBalance());
+        $this->assertEquals(2, $player->getHand(0)?->getCardCount());
+        $this->assertEquals(2, $player->getHand(1)?->getCardCount());
     }
 
     /**
@@ -229,16 +233,19 @@ class BlackJackGameTest extends TestCase
     {
         $player = new BlackJackPlayer('John', 60);
         $game = new BlackJackGame($player);
-        $game->startRound(1, 50);
-        
-        $hand = $player->getHand(0);
-        $this->assertNotNull($hand);
-        
-        // Player now has 10 left, cannot split even if cards match
-        if ($hand->canSplit()) {
-            $result = $game->split();
-            $this->assertFalse($result);
-        }
+        $hand = new BlackJackHand();
+        $hand->setBet(50);
+        $hand->addCard(new CardGraphic('hearts', '9'));
+        $hand->addCard(new CardGraphic('diamonds', '9'));
+        $player->addHand($hand);
+
+        // Only 60 balance and needs another 50 for split after initial setup.
+        $player->subtractBalance(20);
+
+        $result = $game->split();
+
+        $this->assertFalse($result);
+        $this->assertEquals(1, $player->getHandCount());
     }
 
     /**

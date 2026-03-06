@@ -50,22 +50,37 @@ class LibraryController extends AbstractController
         $path = $this->booksFilePath();
 
         if (!file_exists($path)) {
-            $this->saveBooks(self::SEED_BOOKS);
-            return self::SEED_BOOKS;
+            return $this->seedAndReturnBooks();
         }
 
         $raw = file_get_contents($path);
         if ($raw === false || trim($raw) === '') {
-            $this->saveBooks(self::SEED_BOOKS);
-            return self::SEED_BOOKS;
+            return $this->seedAndReturnBooks();
         }
 
         $books = json_decode($raw, true);
         if (!is_array($books)) {
-            $this->saveBooks(self::SEED_BOOKS);
-            return self::SEED_BOOKS;
+            return $this->seedAndReturnBooks();
         }
 
+        return $this->sortBooksByTitle($books);
+    }
+
+    /**
+     * @return array<int, array{title: string, isbn: string, author: string, image: string}>
+     */
+    private function seedAndReturnBooks(): array
+    {
+        $this->saveBooks(self::SEED_BOOKS);
+        return self::SEED_BOOKS;
+    }
+
+    /**
+     * @param array<int, array{title: string, isbn: string, author: string, image: string}> $books
+     * @return array<int, array{title: string, isbn: string, author: string, image: string}>
+     */
+    private function sortBooksByTitle(array $books): array
+    {
         usort($books, static fn(array $bookA, array $bookB): int => strcasecmp($bookA['title'], $bookB['title']));
         return $books;
     }

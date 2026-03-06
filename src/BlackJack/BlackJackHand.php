@@ -216,13 +216,19 @@ class BlackJackHand
     {
         $html = '';
         foreach ($this->cards as $index => $card) {
-            if ($hideFirst && $index === 0) {
-                $html .= '<span class="card-back">🂠</span> ';
-            } else {
-                $html .= $card->toHTML() . ' ';
-            }
+            $html .= $this->renderCardHtml($card, $index, $hideFirst);
         }
+
         return $html;
+    }
+
+    private function renderCardHtml(CardGraphic $card, int $index, bool $hideFirst): string
+    {
+        if ($hideFirst && $index === 0) {
+            return '<span class="card-back">🂠</span> ';
+        }
+
+        return $card->toHTML() . ' ';
     }
 
     /**

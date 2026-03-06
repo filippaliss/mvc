@@ -76,6 +76,11 @@ Search.appendIndex(
             "summary": "Calculate\u0020results\u0020and\u0020update\u0020player\u0020balance.",
             "url": "classes/App-BlackJack-BlackJackGame.html#method_calculateResults"
         },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003AdetermineOutcome\u0028\u0029",
+            "name": "determineOutcome",
+            "summary": "Determine\u0020result\u0020category\u0020for\u0020a\u0020hand\u0020against\u0020dealer\u0020hand.",
+            "url": "classes/App-BlackJack-BlackJackGame.html#method_determineOutcome"
+        },                {
             "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003Asplit\u0028\u0029",
             "name": "split",
             "summary": "Split\u0020current\u0020hand\u0020into\u0020two\u0020hands.",
@@ -105,6 +110,31 @@ Search.appendIndex(
             "name": "getHandResult",
             "summary": "Get\u0020result\u0020message\u0020for\u0020a\u0020hand.",
             "url": "classes/App-BlackJack-BlackJackGame.html#method_getHandResult"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_BUST",
+            "name": "RESULT_BUST",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_BUST"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_BLACKJACK",
+            "name": "RESULT_BLACKJACK",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_BLACKJACK"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_PUSH",
+            "name": "RESULT_PUSH",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_PUSH"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_WIN",
+            "name": "RESULT_WIN",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_WIN"
+        },                {
+            "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003ARESULT_LOSE",
+            "name": "RESULT_LOSE",
+            "summary": "",
+            "url": "classes/App-BlackJack-BlackJackGame.html#constant_RESULT_LOSE"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJackGame\u003A\u003A\u0024deck",
             "name": "deck",

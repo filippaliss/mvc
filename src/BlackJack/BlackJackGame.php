@@ -14,6 +14,12 @@ use App\DeckClass\DeckOfCards;
  */
 class BlackJackGame
 {
+    private const RESULT_BUST = 'bust';
+    private const RESULT_BLACKJACK = 'blackjack';
+    private const RESULT_PUSH = 'push';
+    private const RESULT_WIN = 'win';
+    private const RESULT_LOSE = 'lose';
+
     /**
      * @var DeckOfCards The deck of cards
      */
@@ -202,41 +208,58 @@ class BlackJackGame
     private function calculateResults(): void
     {
         $dealerHand = $this->dealer->getHand();
+
+        foreach ($this->player->getHands() as $hand) {
+            $bet = $hand->getBet();
+            $outcome = $this->determineOutcome($hand, $dealerHand);
+
+            switch ($outcome) {
+                case self::RESULT_BLACKJACK:
+                    $this->player->addBalance($bet + (int) ($bet * 1.5));
+                    break;
+                case self::RESULT_PUSH:
+                    $this->player->addBalance($bet);
+                    break;
+                case self::RESULT_WIN:
+                    $this->player->addBalance($bet * 2);
+                    break;
+                default:
+                    // Loss/bust: stake was already deducted at bet placement.
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Determine result category for a hand against dealer hand.
+     */
+    private function determineOutcome(BlackJackHand $playerHand, BlackJackHand $dealerHand): string
+    {
         $dealerValue = $dealerHand->getValue();
         $dealerBust = $dealerHand->isBust();
         $dealerBlackJack = $dealerHand->isBlackJack();
 
-        foreach ($this->player->getHands() as $hand) {
-            $playerValue = $hand->getValue();
-            $playerBust = $hand->isBust();
-            $playerBlackJack = $hand->isBlackJack();
-            $bet = $hand->getBet();
+        $playerValue = $playerHand->getValue();
+        $playerBust = $playerHand->isBust();
+        $playerBlackJack = $playerHand->isBlackJack();
 
-            // Player bust - lose bet (already deducted)
-            if ($playerBust) {
-                continue;
-            }
-
-            // Player blackjack
-            if ($playerBlackJack && !$dealerBlackJack) {
-                $this->player->addBalance($bet + (int)($bet * 1.5));
-                continue;
-            }
-
-            // Push (tie)
-            if ($playerValue === $dealerValue) {
-                $this->player->addBalance($bet);
-                continue;
-            }
-
-            // Dealer bust or player higher
-            if ($dealerBust || $playerValue > $dealerValue) {
-                $this->player->addBalance($bet * 2);
-                continue;
-            }
-
-            // Dealer wins - lose bet (already deducted)
+        if ($playerBust) {
+            return self::RESULT_BUST;
         }
+
+        if ($playerBlackJack && !$dealerBlackJack) {
+            return self::RESULT_BLACKJACK;
+        }
+
+        if ($playerValue === $dealerValue) {
+            return self::RESULT_PUSH;
+        }
+
+        if ($dealerBust || $playerValue > $dealerValue) {
+            return self::RESULT_WIN;
+        }
+
+        return self::RESULT_LOSE;
     }
 
     /**
@@ -246,54 +269,83 @@ class BlackJackGame
      */
     public function split(): bool
     {
-        $hand = $this->player->getHand($this->currentHandIndex);
-        if ($hand === null || !$hand->canSplit()) {
+        $hand = $this->getCurrentSplittableHand();
+        if ($hand === null) {
             return false;
         }
 
         $bet = $hand->getBet();
-        if (!$this->player->canAfford($bet)) {
+        if (!$this->canPlaceSplitBet($bet)) {
             return false;
         }
 
-        // Deduct bet for new hand
         $this->player->placeBet($bet);
+        [$originalHand, $newHand] = $this->buildSplitHands($hand, $bet);
+        $this->dealSplitCards($originalHand, $newHand);
+        $this->replaceCurrentHandWith($originalHand, $newHand);
 
-        // Create new hand with one card
+        return true;
+    }
+
+    private function getCurrentSplittableHand(): ?BlackJackHand
+    {
+        $hand = $this->player->getHand($this->currentHandIndex);
+        if ($hand === null || !$hand->canSplit()) {
+            return null;
+        }
+
+        return $hand;
+    }
+
+    private function canPlaceSplitBet(int $bet): bool
+    {
+        return $this->player->canAfford($bet);
+    }
+
+    /**
+     * @return array{0: BlackJackHand, 1: BlackJackHand}
+     */
+    private function buildSplitHands(BlackJackHand $hand, int $bet): array
+    {
         $cards = $hand->getCards();
+
         $newHand = new BlackJackHand();
         $newHand->setBet($bet);
         $newHand->addCard($cards[1]);
         $newHand->markAsSplit();
 
-        // Keep first card in original hand
         $originalHand = new BlackJackHand();
         $originalHand->setBet($bet);
         $originalHand->addCard($cards[0]);
         $originalHand->markAsSplit();
 
-        // Deal new card to each hand
+        return [$originalHand, $newHand];
+    }
+
+    private function dealSplitCards(BlackJackHand $originalHand, BlackJackHand $newHand): void
+    {
         $card1 = $this->deck->drawCard();
         $card2 = $this->deck->drawCard();
+
         if ($card1 !== null) {
             $originalHand->addCard($card1);
         }
+
         if ($card2 !== null) {
             $newHand->addCard($card2);
         }
+    }
 
-        // Replace current hand and insert new hand
+    private function replaceCurrentHandWith(BlackJackHand $originalHand, BlackJackHand $newHand): void
+    {
         $hands = $this->player->getHands();
         $hands[$this->currentHandIndex] = $originalHand;
         array_splice($hands, $this->currentHandIndex + 1, 0, [$newHand]);
 
-        // Update player's hands
         $this->player->clearHands();
         foreach ($hands as $h) {
             $this->player->addHand($h);
         }
-
-        return true;
     }
 
     /**
@@ -349,30 +401,19 @@ class BlackJackGame
         }
 
         $dealerHand = $this->dealer->getHand();
-        $dealerValue = $dealerHand->getValue();
-        $dealerBust = $dealerHand->isBust();
-        $dealerBlackJack = $dealerHand->isBlackJack();
+        $outcome = $this->determineOutcome($hand, $dealerHand);
 
-        $playerValue = $hand->getValue();
-        $playerBust = $hand->isBust();
-        $playerBlackJack = $hand->isBlackJack();
-
-        if ($playerBust) {
-            return 'BUST - You lose';
+        switch ($outcome) {
+            case self::RESULT_BUST:
+                return 'BUST - You lose';
+            case self::RESULT_BLACKJACK:
+                return 'BLACKJACK! - You win 1.5x';
+            case self::RESULT_PUSH:
+                return 'PUSH - Tie';
+            case self::RESULT_WIN:
+                return 'WIN';
+            default:
+                return 'LOSE';
         }
-
-        if ($playerBlackJack && !$dealerBlackJack) {
-            return 'BLACKJACK! - You win 1.5x';
-        }
-
-        if ($playerValue === $dealerValue) {
-            return 'PUSH - Tie';
-        }
-
-        if ($dealerBust || $playerValue > $dealerValue) {
-            return 'WIN';
-        }
-
-        return 'LOSE';
     }
 }
