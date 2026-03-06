@@ -28,6 +28,9 @@
 /* 8. Library Module */
 @import url('./_library.css');
 
+/* 9. Project Module (/proj) */
+@import url('./_project.css');
+
 /* ===== MISC LEGACY STYLES ===== */
 #magic {
     size: 60px;
